@@ -36,6 +36,7 @@ public:
 	virtual void sortBooks() = 0;
 
 	int getSize();
+	Book* getBooks();
 
 	int doesBookExist(Book);
 	int addBook(Book);				// adds book to list or increases qty, returns size of list
@@ -45,4 +46,6 @@ public:
 	void saveBookListData(std::string);
 	// prints out the list of books accordingly
 	virtual void printBooks();
+	double printWholesaleValue();
+	double printRetailValue();
 };

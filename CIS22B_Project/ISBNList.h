@@ -10,5 +10,4 @@ public:
 
 	void sortBooks();
 	Book getBook(unsigned int);
-	Book* getBooks();
 };

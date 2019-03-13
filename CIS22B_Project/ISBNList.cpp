@@ -68,7 +68,3 @@ Book ISBNList::getBook(unsigned int bISBN) {
 	// book at position of the word
 	return books[position];
 }
-
-Book* ISBNList::getBooks() {
-	return books;
-}

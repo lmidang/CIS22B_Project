@@ -31,6 +31,10 @@ int BookList::getSize() {
 	return size;
 }
 
+Book* BookList::getBooks() {
+	return books;
+}
+
 int BookList::doesBookExist(Book b) {	// just going to go with linear search to make it easy
 	for (int i = 0; i < size; i++) {
 		if (b.getISBN() == books[i].getISBN()) {
@@ -99,4 +103,28 @@ void BookList::printBooks()  {
 			<< b.getPublish() << "," << b.getDateAdd() << "," << b.getQuantity() << ","
 			<< b.getWholeSale() << "," << b.getRetail() << std::endl;
 	}
+}
+
+
+double BookList::printWholesaleValue() {
+	double totalWholesale = 0;
+
+	for (int i = 0; i < size; i++) {
+		Book b = books[i];
+		std::cout << b.getISBN() << "," << b.getTitle() << ","
+			<< b.getWholeSale() << std::endl;
+		totalWholesale += b.getWholeSale();
+	}
+	return totalWholesale;
+}
+
+double BookList::printRetailValue() {
+	double totalRetail = 0;
+
+	for (int i = 0; i < size; i++) {
+		Book b = books[i];
+		std::cout << b.getISBN() << "," << b.getTitle() << ", " << b.getRetail() << std::endl;
+		totalRetail += b.getRetail();
+	}
+	return totalRetail;
 }
