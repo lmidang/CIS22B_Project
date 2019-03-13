@@ -115,6 +115,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AuthorList.h" />
+    <ClInclude Include="Book.h" />
+    <ClInclude Include="BookList.h" />
+    <ClInclude Include="ISBNList.h" />
+    <ClInclude Include="TitleList.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AuthorList.cpp" />
+    <ClCompile Include="Book.cpp" />
+    <ClCompile Include="BookList.cpp" />
+    <ClCompile Include="CIS22B_Project.cpp" />
+    <ClCompile Include="ISBNList.cpp" />
+    <ClCompile Include="TitleList.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
