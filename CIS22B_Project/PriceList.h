@@ -19,7 +19,4 @@ public:
 
 
 	void sortBooks();
-
-	ISBNList getBooks(std::string);
-
 };

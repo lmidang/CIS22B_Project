@@ -2,30 +2,25 @@
 #include <string>
 #include "PublisherList.h"
 #include "BookList.h"
+#include "PriceList.h"
 
 
 
 PriceList::PriceList(Book b[], int s) : BookList(b, s) {
-
-
-
 }
 
 
 
 PriceList::PriceList(const BookList& bl) : BookList(bl) {
-
-
-
 }
 
 
 
-void BookList::sortBooks() {
+void PriceList::sortBooks() {
 
 	int startIndex;		// starting index
 
-	int minIndex;		// index for the minimum value
+	int maxIndex;		// index for the minimum value
 
 
 
@@ -33,9 +28,9 @@ void BookList::sortBooks() {
 
 	for (startIndex = 0; startIndex < getSize(); startIndex++) {
 
-		minIndex = startIndex;	// set minimum value index to starting index
+		maxIndex = startIndex;	// set minimum value index to starting index
 
-		double minRetail = books[minIndex].getRetail();	// set to the element at minIndex
+		double maxCost = books[maxIndex].getWholeSale();	// set to the element at minIndex
 
 
 
@@ -45,7 +40,7 @@ void BookList::sortBooks() {
 
 			// if the word at the index is lower than minValue set minIndex to index and minValue to word
 
-			minRetail = minimum(minRetail, books[index].getRetail());
+			maxCost = maximum(maxCost, books[index].getWholeSale());
 
 		}
 
@@ -53,48 +48,12 @@ void BookList::sortBooks() {
 
 		// switch the element at minIndex and the element at startIndex
 
-		Book tempB = books[minIndex];
+		Book tempB = books[maxIndex];
 
-		books[minIndex] = books[startIndex];
+		books[maxIndex] = books[startIndex];
 
 		books[startIndex] = tempB;
 
 	}
-
-}
-
-
-
-// under assumption that books have been sorted
-
-ISBNList PriceList::getBooks(int retail) {
-
-	int num = 0;
-
-	const int numBooks = getSize();
-
-	ISBNList bl;
-
-
-
-	for (int i = 0; i < getSize(); i++) {
-
-		if (compare(books[i].getRetail(), retail) == 0) {
-
-			bl.addBook(books[i]);
-
-		}
-
-		else if (num > 0) {
-
-			break;
-
-		}
-
-	}
-
-
-
-	return bl;
 
 }

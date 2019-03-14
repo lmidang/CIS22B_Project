@@ -1,18 +1,10 @@
 #include <iostream>
 #include <string>
-#include "Publisher.h"
+#include "QuantityList.h"
 
 
 
-Quantity::Quantity(Book b[], int s) : BookList(b, s) {
-
-
-
-}
-
-
-
-Quantity::Quantity(const BookList& bl) : BookList(bl) {
+QuantityList::QuantityList(Book b[], int s) : BookList(b, s) {
 
 
 
@@ -20,11 +12,19 @@ Quantity::Quantity(const BookList& bl) : BookList(bl) {
 
 
 
-void Quantity::sortBooks() {
+QuantityList::QuantityList(const BookList& bl) : BookList(bl) {
+
+
+
+}
+
+
+
+void QuantityList::sortBooks() {
 
 	int startIndex;		// starting index
 
-	int minIndex;		// index for the minimum value
+	int maxIndex;		// index for the minimum value
 
 
 
@@ -32,9 +32,9 @@ void Quantity::sortBooks() {
 
 	for (startIndex = 0; startIndex < getSize(); startIndex++) {
 
-		minIndex = startIndex;	// set minimum value index to starting index
+		maxIndex = startIndex;	// set minimum value index to starting index
 
-		int minQuantity = books[minIndex].getQuantity();	// set to the element at minIndex
+		int maxQty = books[maxIndex].getQuantity();	// set to the element at minIndex
 
 
 
@@ -44,7 +44,7 @@ void Quantity::sortBooks() {
 
 			// if the word at the index is lower than minValue set minIndex to index and minValue to word
 
-			minQuantity = minimum(minQuantity, books[index].getQuantity());
+			maxQty = maximum(maxQty, books[index].getQuantity());
 
 		}
 
@@ -52,48 +52,12 @@ void Quantity::sortBooks() {
 
 		// switch the element at minIndex and the element at startIndex
 
-		Book tempB = books[minIndex];
+		Book tempB = books[maxIndex];
 
-		books[minIndex] = books[startIndex];
+		books[maxIndex] = books[startIndex];
 
 		books[startIndex] = tempB;
 
 	}
-
-}
-
-
-
-// under assumption that books have been sorted
-
-ISBNList Quantity::getBooks(int quantity) {
-
-	int num = 0;
-
-	const int numBooks = getSize();
-
-	ISBNList bl;
-
-
-
-	for (int i = 0; i < getSize(); i++) {
-
-		if (compare(books[i].getQuantity(), quantity) == 0) {
-
-			bl.addBook(books[i]);
-
-		}
-
-		else if (num > 0) {
-
-			break;
-
-		}
-
-	}
-
-
-
-	return bl;
 
 }

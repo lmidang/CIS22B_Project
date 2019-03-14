@@ -1,51 +1,68 @@
 #include <iostream>
 #include <string>
 #include "Report.h"
-#include "AgeList.h"
-#include "QuantityList.h"
-#include "CostList.h"
-void printReport(int input) {
-	switch (input) {
 
-	case 1: {
-		BookList *list = new BookList(getBooks(), getSize());
-		list->printBooks();
-		delete list;
-		break;
+Report::Report(BookList* pBl) {
+	booksOriginal = pBl;
+}
+
+Report::~Report() {
+	if (booksOriginal != nullptr) {
+		delete booksOriginal;
+		booksOriginal = nullptr;
 	}
+
+	if (printBooks != nullptr) {
+		delete printBooks;
+		printBooks = nullptr;
+	}
+}
+
+void Report::printReport(int input) {
+	switch (input) {
 	case 2: {
-		BookList *wholesale = new BookList(getBooks(), getSize());
-		double totalWholesaleValue = wholesale->printWholesaleValue();
+		printBooks = new ISBNList(*booksOriginal);
+		printBooks->sortBooks();
+		double totalWholesaleValue = printBooks->printWholesaleValue();
 		std::cout << "The total wholesale value for all the books in the inventory is: " << totalWholesaleValue << std::endl;
-		delete wholesale;
+		delete printBooks;
 		break;
 	}
 	case 3: {
-		BookList *retail = new BookList(getBooks(), getSize());
-		double totalRetailValue = retail->printRetailValue();
+		printBooks = new ISBNList(*booksOriginal);
+		printBooks->sortBooks();
+		double totalRetailValue = printBooks->printRetailValue();
 		std::cout << "The total retail value for all the books in the inventory is: " << totalRetailValue << std::endl;
-		delete retail;
+		delete printBooks;
 		break;
 	}
-	case 4: {
-		BookList *byQuant = new QuantityList(getBooks(), getSize());
-		byQuant->sortBooks();
-		byQuant->printBooks();
-		delete byQuant;
-		break;
+	default: {
+		switch (input) {
+		case 1: {
+			printBooks = new ISBNList(*booksOriginal);
+			break;
+		}
+		case 4: {
+			printBooks = new QuantityList(*booksOriginal);
+			break;
+		}
+		case 5: {
+			printBooks = new PriceList(*booksOriginal);
+			break;
+		}
+		case 6: {
+			printBooks = new AgeList(*booksOriginal);
+			break;
+		}
+		default: {
+			throw "Wrong input";
+		}
+		}
+
+		printBooks->sortBooks();
+		printBooks->printBooks();
+		delete printBooks;
+		printBooks = nullptr;
 	}
-	case 5: {
-		BookList *byCost = new CostList(getBooks(), getSize());
-		byCost->sortBooks();
-		byCost->printBooks();
-		delete byCost;
-		break;
-	}
-	case 6: {
-		BookList *byAge = new AgeList(getBooks(), getSize());
-		byAge->sortBooks();
-		byAge->printBooks();
-		delete byAge;
-		break;
 	}
 }

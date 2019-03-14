@@ -8,18 +8,16 @@
 
 
 
-class Quantity : public BookList {
+class QuantityList : public BookList {
 
 public:
 
-	Quantity(Book[], int);
+	QuantityList(Book[], int);
 
-	Quantity(const BookList&);
+	QuantityList(const BookList&);
 
 
 
 	void sortBooks();
-
-	ISBNList getBooks(std::string);
 
 };

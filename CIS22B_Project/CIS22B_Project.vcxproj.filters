@@ -30,6 +30,18 @@
     <ClInclude Include="AuthorList.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="PriceList.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QuantityList.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Report.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AgeList.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BookList.cpp">
@@ -48,6 +60,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CIS22B_Project.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PriceList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QuantityList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Report.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AgeList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

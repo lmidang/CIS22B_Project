@@ -7,7 +7,7 @@ Book::Book() {
 	mTitle = " ";
 	mAuthor = " ";
 	mPublisher = " ";
-	mDateAdded = "0/0/0000";
+	mDateAdded = "0000/00/00";	// YYYY/MM/DD
 	mQuantOnHand = 0;
 	mWholeSale = 00.00;
 	mRetail = 00.00;

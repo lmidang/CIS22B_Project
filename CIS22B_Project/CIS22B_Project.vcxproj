@@ -115,18 +115,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AgeList.h" />
     <ClInclude Include="AuthorList.h" />
     <ClInclude Include="Book.h" />
     <ClInclude Include="BookList.h" />
     <ClInclude Include="ISBNList.h" />
+    <ClInclude Include="PriceList.h" />
+    <ClInclude Include="QuantityList.h" />
+    <ClInclude Include="Report.h" />
     <ClInclude Include="TitleList.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AgeList.cpp" />
     <ClCompile Include="AuthorList.cpp" />
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="BookList.cpp" />
     <ClCompile Include="CIS22B_Project.cpp" />
     <ClCompile Include="ISBNList.cpp" />
+    <ClCompile Include="PriceList.cpp" />
+    <ClCompile Include="QuantityList.cpp" />
+    <ClCompile Include="Report.cpp" />
     <ClCompile Include="TitleList.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

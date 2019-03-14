@@ -1,18 +1,7 @@
-#include <iostream>
-#include <string>
-#include "Publisher.h"
+#include "AgeList.h"
 
 
-
-Age::Age(Book b[], int s) : BookList(b, s) {
-
-
-
-}
-
-
-
-Age::Age(const BookList& bl) : BookList(bl) {
+AgeList::AgeList(Book b[], int s) : BookList(b, s) {
 
 
 
@@ -20,7 +9,15 @@ Age::Age(const BookList& bl) : BookList(bl) {
 
 
 
-void Age::sortBooks() {
+AgeList::AgeList(const BookList& bl) : BookList(bl) {
+
+
+
+}
+
+
+
+void AgeList::sortBooks() {
 
 	int startIndex;		// starting index
 
@@ -34,7 +31,7 @@ void Age::sortBooks() {
 
 		minIndex = startIndex;	// set minimum value index to starting index
 
-		std::string minAge = books[minIndex].getDateAdded();	// set to the element at minIndex
+		std::string minAge = books[minIndex].getDateAdd();	// set to the element at minIndex
 
 
 
@@ -44,7 +41,7 @@ void Age::sortBooks() {
 
 			// if the word at the index is lower than minValue set minIndex to index and minValue to word
 
-			minAge = minimum(minAge, books[index].getDateAdded());
+			minAge = minimum(minAge, books[index].getDateAdd());
 
 		}
 
@@ -59,41 +56,5 @@ void Age::sortBooks() {
 		books[startIndex] = tempB;
 
 	}
-
-}
-
-
-
-// under assumption that books have been sorted
-
-ISBNList Age::getBooks(std::string age) {
-
-	int num = 0;
-
-	const int numBooks = getSize();
-
-	ISBNList bl;
-
-
-
-	for (int i = 0; i < getSize(); i++) {
-
-		if (compare(books[i].getDateAdded(), age) == 0) {
-
-			bl.addBook(books[i]);
-
-		}
-
-		else if (num > 0) {
-
-			break;
-
-		}
-
-	}
-
-
-
-	return bl;
 
 }

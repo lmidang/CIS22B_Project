@@ -1,25 +1,22 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 
 #include "BookList.h"
 
-#include "ISBNList.h"
 
 
-
-class Age : public BookList {
+class AgeList : public BookList {
 
 public:
 
-	Age(Book[], int);
+	AgeList(Book[], int);
 
-	Age(const BookList&);
+	AgeList(const BookList&);
 
 
 
 	void sortBooks();
-
-	ISBNList getBooks(std::string);
 
 };

@@ -10,6 +10,11 @@ TypeName minimum(TypeName a, TypeName b) {
 }
 
 template <typename TypeName>
+TypeName maximum(TypeName a, TypeName b) {
+	return (a < b) ? b : a;
+}
+
+template <typename TypeName>
 int compare(TypeName a, TypeName b) {
 	if (a == b) {
 		return 0;
