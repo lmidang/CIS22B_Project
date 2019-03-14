@@ -1,5 +1,8 @@
 #pragma once
+#include <iostream>
+#include <string>
 #include "BookList.h"
+#include "ISBNList.h"
 #include "AgeList.h"
 #include "QuantityList.h"
 #include "PriceList.h"

@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include "Report.h"
 
 Report::Report(BookList* pBl) {

@@ -1,7 +1,3 @@
-#include <iostream>
-#include <string>
-#include "PublisherList.h"
-#include "BookList.h"
 #include "PriceList.h"
 
 

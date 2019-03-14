@@ -1,11 +1,8 @@
 #pragma once
 
 #include <iostream>
-
+#include <string>
 #include "BookList.h"
-
-#include "ISBNList.h"
-
 
 
 class QuantityList : public BookList {
