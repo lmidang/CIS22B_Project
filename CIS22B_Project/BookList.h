@@ -4,16 +4,32 @@
 #include <string>
 #include "Book.h"
 
-template <typename TypeName> 
+/*
+template function to calculate the minimum between two parameters of different data types
+if the first parameter is smaller than the second, return the first
+else return the second
+*/
+template <typename TypeName>
 TypeName minimum(TypeName a, TypeName b) {
 	return (a > b) ? b : a;
 }
 
+/*
+template function to calculate the maximum between two parameters of different data types
+if the first parameter is greater than the second, return the first
+else return the second
+*/
 template <typename TypeName>
 TypeName maximum(TypeName a, TypeName b) {
 	return (a < b) ? b : a;
 }
 
+/*
+template function to compare two parameters of different data types
+if the first parameter is equal to the second, return 0
+if the first parameter is smaller than the second, return 1
+if the first parameter is greater than the second, return -1
+*/
 template <typename TypeName>
 int compare(TypeName a, TypeName b) {
 	if (a == b) {
@@ -29,28 +45,27 @@ int compare(TypeName a, TypeName b) {
 
 class BookList {
 protected:
-	Book* books;
-	int size;
+	Book* books;		//member variable for an array of books
+	int size;		//member variable for the size of the array
 
 public:
-	BookList();
-	BookList(Book*, int);
-	BookList(const BookList&);
-	virtual ~BookList();
+	BookList();		//default constructor
+	BookList(Book*, int);		//two argument constructor
+	BookList(const BookList&);		//one argument constructor
+	virtual ~BookList();		//destructor
 
-	virtual void sortBooks() = 0;
+	virtual void sortBooks() = 0;		//pure virtual function to sort the books in the books array
 
-	int getSize();
-	Book* getBooks();
+	int getSize();		//function to return the size of the array
+	Book* getBooks();		//function to return the books array
 
-	int doesBookExist(Book);
-	int addBook(Book);				// adds book to list or increases qty, returns size of list
-	int removeBook(Book);			// removes book from the list
-	void updateBookInfo(Book);
+	int doesBookExist(Book);		//function to check if a Book exists in the books array
+	int addBook(Book);				//function to add a book to the books array
+	int removeBook(Book);			//function to remove a book from the books array
+	void updateBookInfo(Book);		//function to change the information for a Book in the books array
 
-	void saveBookListData(std::string);
-	// prints out the list of books accordingly
-	virtual void printBooks();
-	double printWholesaleValue();
-	double printRetailValue();
+	void saveBookListData(std::string);		//function to print the information for all the books in the array into a file
+	virtual void printBooks();		//function to print the information for all the books in the array onto the screen
+	double printWholesaleValue();		//function to print the wholesale cost for all the books in the array and calculate the total wholesale cost
+	double printRetailValue();		//function to print the retail price for all the books in the array and calculate the total retail price
 };

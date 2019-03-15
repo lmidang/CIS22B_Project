@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "AuthorList.h"
 
 AuthorList::AuthorList(Book b[], int s) : BookList(b, s) {

@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "CostList.h"
 
 CostList::CostList(Book b[], int s) : BookList(b, s) {

@@ -9,10 +9,10 @@
 
 class Report {
 protected:
-	BookList* booksOriginal;
+	BookList* booksOriginal;//member variables for BookList objects
 	BookList* printBooks;
 public:
-	Report(BookList*);
-	~Report();
-	void printReport(int);
+	Report(BookList*);//one argument constructor
+	~Report();//destructor
+	void printReport(int);//function to print various reports based on user's choice
 };

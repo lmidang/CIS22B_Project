@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "TitleList.h"
 
 TitleList::TitleList(Book b[], int s) : BookList(b, s) {
