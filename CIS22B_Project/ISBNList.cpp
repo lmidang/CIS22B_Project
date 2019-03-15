@@ -19,7 +19,7 @@ void ISBNList::sortBooks() {
 	// loop through the array from 0
 	for (startIndex = 0; startIndex < size; startIndex++) {
 		minIndex = startIndex;	// set minimum value index to starting index
-		unsigned int minISBN = books[minIndex].getISBN();	// set to the element at minIndex
+		unsigned long long minISBN = books[minIndex].getISBN();	// set to the element at minIndex
 
 		// loop through the array from one after the startIndex
 		for (int index = startIndex + 1; index < size; index++) {
@@ -35,7 +35,7 @@ void ISBNList::sortBooks() {
 
 }
 
-Book ISBNList::getBook(unsigned int bISBN) {
+Book ISBNList::getBook(unsigned long long bISBN) {
 	int firstElement = 0;		// index of the first element to search through
 	int lastElement = size;		// index of the last element to search through + 1
 	int middle;					// index of the middle element

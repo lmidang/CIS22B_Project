@@ -15,8 +15,6 @@ public:
 
 	AgeList(const BookList&);
 
-
-
 	void sortBooks();
-
+	void printBooks();
 };

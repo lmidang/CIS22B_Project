@@ -7,13 +7,13 @@ Book::Book() {
 	mTitle = " ";
 	mAuthor = " ";
 	mPublisher = " ";
-	mDateAdded = "0000/00/00";	// YYYY/MM/DD
+	mDateAdded = "0000/00/00";	// YYYY-MM-DD
 	mQuantOnHand = 0;
 	mWholeSale = 00.00;
 	mRetail = 00.00;
 }
 
-Book::Book(unsigned int i, std::string t, std::string a, std::string p, std::string d, int q, double w, double r) {
+Book::Book(unsigned long long i, std::string t, std::string a, std::string p, std::string d, int q, double w, double r) {
 	mISBN = i;
 	mTitle = t;
 	mAuthor = a;
@@ -24,7 +24,7 @@ Book::Book(unsigned int i, std::string t, std::string a, std::string p, std::str
 	mRetail = r;
 }
 
-void Book::setISBN(unsigned int i) {
+void Book::setISBN(unsigned long long i) {
 	mISBN = i;
 }
 
@@ -56,7 +56,7 @@ void Book::setRetail(double r) {
 	mRetail = r;
 }
 
-unsigned int Book::getISBN() const {
+unsigned long long Book::getISBN() const {
 	return mISBN;
 }
 

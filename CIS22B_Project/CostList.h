@@ -1,25 +1,17 @@
 #pragma once
 
 #include <iostream>
-
+#include <iomanip>
+#include <string>
 #include "BookList.h"
-
 #include "ISBNList.h"
 
-
-
-class WholesaleCost : public BookList {
+class CostList : public BookList {
 
 public:
-
-	WholesaleCost(Book[], int);
-
-	WholesaleCost(const BookList&);
-
-
+	CostList (Book[], int);
+	CostList(const BookList&);
 
 	void sortBooks();
-
-	ISBNList getBooks(std::string);
-
+	void printBooks();
 };

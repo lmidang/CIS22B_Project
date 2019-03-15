@@ -45,7 +45,7 @@ void Report::printReport(int input) {
 			break;
 		}
 		case 5: {
-			printBooks = new PriceList(*booksOriginal);
+			printBooks = new CostList(*booksOriginal);
 			break;
 		}
 		case 6: {

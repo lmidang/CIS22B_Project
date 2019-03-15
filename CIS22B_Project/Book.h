@@ -10,7 +10,7 @@
 class Book {
 
 private:
-	unsigned int mISBN;
+	unsigned long long mISBN;
 	std::string mTitle;
 	std::string mAuthor;
 	std::string mPublisher;
@@ -21,8 +21,8 @@ private:
 
 public:
 	Book();
-	Book(unsigned int, std::string, std::string, std::string, std::string, int, double, double);
-	void setISBN(unsigned int);
+	Book(unsigned long long, std::string, std::string, std::string, std::string, int, double, double);
+	void setISBN(unsigned long long);
 	void setTitle(std::string);
 	void setAuthor(std::string);
 	void setPublish(std::string);
@@ -30,7 +30,7 @@ public:
 	void setQuantity(int);
 	void setWholeSale(double);
 	void setRetail(double);
-	unsigned int getISBN() const;
+	unsigned long long getISBN() const;
 	std::string getTitle() const;
 	std::string getAuthor() const;
 	std::string getPublish() const;

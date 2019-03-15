@@ -9,5 +9,5 @@ public:
 	ISBNList(const BookList&);
 
 	void sortBooks();
-	Book getBook(unsigned int);
+	Book getBook(unsigned long long);
 };

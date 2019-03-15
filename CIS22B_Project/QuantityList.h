@@ -8,13 +8,9 @@
 class QuantityList : public BookList {
 
 public:
-
 	QuantityList(Book[], int);
-
 	QuantityList(const BookList&);
 
-
-
 	void sortBooks();
-
+	void printBooks();
 };
