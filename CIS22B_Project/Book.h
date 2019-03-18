@@ -6,11 +6,11 @@
 #include <iostream>
 #include <string>
 
-
 class Book {
 
 private:
-	unsigned long long mISBN;
+
+	unsigned long long mISBN;	//member variables
 	std::string mTitle;
 	std::string mAuthor;
 	std::string mPublisher;
@@ -20,8 +20,10 @@ private:
 	double mRetail;
 
 public:
-	Book();
-	Book(unsigned long long, std::string, std::string, std::string, std::string, int, double, double);
+
+	Book();	//default constructor
+	Book(unsigned long long, std::string, std::string, std::string, std::string, int, double, double);	//8 argument constructor
+	//mutator methods
 	void setISBN(unsigned long long);
 	void setTitle(std::string);
 	void setAuthor(std::string);
@@ -30,6 +32,7 @@ public:
 	void setQuantity(int);
 	void setWholeSale(double);
 	void setRetail(double);
+	//accessor methods
 	unsigned long long getISBN() const;
 	std::string getTitle() const;
 	std::string getAuthor() const;
@@ -39,5 +42,4 @@ public:
 	double getWholeSale() const;
 	double getRetail() const;
 };
-
 #endif

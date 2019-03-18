@@ -6,8 +6,8 @@
 
 /*
 template function to calculate the minimum between two parameters of different data types
-if the first parameter is smaller than the second, return the first
-else return the second
+if the first parameter is greater than the second, return the second
+else return the first
 */
 template <typename TypeName>
 TypeName minimum(TypeName a, TypeName b) {
@@ -16,8 +16,8 @@ TypeName minimum(TypeName a, TypeName b) {
 
 /*
 template function to calculate the maximum between two parameters of different data types
-if the first parameter is greater than the second, return the first
-else return the second
+if the first parameter is smaller than the second, return the second
+else return the first
 */
 template <typename TypeName>
 TypeName maximum(TypeName a, TypeName b) {
@@ -26,9 +26,12 @@ TypeName maximum(TypeName a, TypeName b) {
 
 /*
 template function to compare two parameters of different data types
-if the first parameter is equal to the second, return 0
-if the first parameter is smaller than the second, return 1
-if the first parameter is greater than the second, return -1
+if the first parameter is equal to the second
+	return 0
+if the first parameter is smaller than the second
+	return 1
+if the first parameter is greater than the second
+	return -1
 */
 template <typename TypeName>
 int compare(TypeName a, TypeName b) {
@@ -54,7 +57,8 @@ public:
 	BookList(const BookList&);		//one argument constructor
 	virtual ~BookList();		//destructor
 
-	virtual void sortBooks() = 0;		//pure virtual function to sort the books in the books array
+	//pure virtual function to sort the books in the books array and will be implemented in the derived classes
+	virtual void sortBooks() = 0;
 
 	int getSize();		//function to return the size of the array
 	Book* getBooks();		//function to return the books array
