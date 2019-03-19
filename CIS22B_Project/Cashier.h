@@ -5,15 +5,20 @@
 #include "BookList.h"
 #include "ISBNList.h"
 
-class Cashier : public ISBNList
+class Cashier 
 {
 protected:
-	ISBNList* isbn;
-	unsigned long long int inputISBN;
-	Book cartList[50];
+	ISBNList* mpCartList;
+	BookList* mpInventory;
+	unsigned long long int mInputISBN;
+//	Book cartList[50];
 public:
-	Cashier(); //default constructor
-	Cashier(ISBNList*); 
+	class isbnDoesNotExistException {};
+	class negativeQtyException {};
+	class notEnoughInStockException {};
+
+	Cashier(BookList*); 
+	~Cashier();
 
 	//getter functions
 	unsigned long long int getInputISBN() const;
@@ -21,18 +26,17 @@ public:
 
 	//setter functions
 	void setInputISBN(unsigned long long int);
-	void setCartList(Book isbnCartList[50]); //possibly uneccessary
-
-
 
 	//put isbn sorted book object into cart array 
-	void ISBNArrayAdd(unsigned long long int);
+	void ISBNArrayAdd(unsigned long long int, int);
 	
-	//missing function to subtract from cart
-	//missing function to subtract/add a book from inventory list file
-	//missing function to print isbn, name quantity, and price values from cart
+	// function to subtract from cart
+	int removeFromCart(unsigned long long, int);
+	// function to subtract/add books from inventory list file
+	void updateInventory(std::string);
+	// function to print isbn, name quantity, and price values from cart
+	void printCart();
 	
-
 	double getSalesTax();
 	double getSubTotal();
 };

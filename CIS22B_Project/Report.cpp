@@ -7,6 +7,7 @@ One argument constructor that passes in a pointer to the BookList class.
 */
 Report::Report(BookList *pBl) {
 	booksOriginal = pBl;	//copies the address of a pointer to a BookList class
+	printBooks = nullptr;
 }
 
 /*

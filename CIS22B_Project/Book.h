@@ -8,8 +8,7 @@
 
 class Book {
 
-private:
-
+protected:
 	unsigned long long mISBN;	//member variables
 	std::string mTitle;
 	std::string mAuthor;
@@ -41,5 +40,29 @@ public:
 	int getQuantity() const;
 	double getWholeSale() const;
 	double getRetail() const;
+
+	// friend method to increase and decrease quantity of a book
+	friend int addBookQty(Book a, Book b) {
+		return a.mQuantOnHand + b.mQuantOnHand;
+	}
+	friend int subtractBookQty(Book a, Book b) {
+		return a.mQuantOnHand - b.mQuantOnHand;
+	}
+	friend int subtractBookQty(Book a, int b) {
+		return a.mQuantOnHand - b;
+	}
+
+	// operator overload to print full book information
+	friend std::ostream& operator<< (std::ostream &out, const Book &b) {
+		out << "ISBN: " << b.mISBN << std::endl
+			<< "Book Title: " << b.mTitle << std::endl
+			<< "Author: " << b.mAuthor << std::endl
+			<< "Publisher: " << b.mPublisher << std::endl
+			<< "Date Added: " << b.mDateAdded << std::endl
+			<< "Quantity-On-Hand: " << b.mQuantOnHand << std::endl
+			<< "Wholesale Cost: " << b.mWholeSale << std::endl
+			<< "Retail Price: " << b.mRetail << std::endl;
+		return out;
+	}
 };
 #endif

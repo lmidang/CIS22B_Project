@@ -79,6 +79,22 @@ int BookList::doesBookExist(Book b) {	// just going to go with linear search to 
 	return -1;
 }
 
+/*
+Function to check if the Book exists in the Book array by using linear search
+Takes one unsigned long long as its argument
+	Checks each Book's ISBN in the books array to see if they match
+		returns the position of the book in the books array
+*/
+
+int BookList::doesBookExist(unsigned long long isbn) {
+	for (int i = 0; i < size; i++) {				//uses linear seach to go through each element of the books array
+		if (isbn == books[i].getISBN()) {	//checks the ISBN argument with the Book in the books array's ISBN
+			return i;								//returns the position of the Book in the books array
+		}
+	}
+	return -1;
+}
+
 
 /*
 function to add a book to the books array

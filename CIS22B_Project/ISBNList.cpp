@@ -82,12 +82,12 @@ Return index of word.
 
 Book ISBNList::getBook(unsigned long long bISBN) {
 	int firstElement = 0;		// index of the first element to search through
-	int lastElement = size;		// index of the last element to search through + 1
+	int lastElement = size - 1;	// index of the last element to search through + 1
 	int middle;					// index of the middle element
 	int position = -1;			// position of the Book found  (set to -1 by default)
 
 	// loop while position is still -1 (Book not found) and the first element < last element
-	while ((position == -1) && (firstElement < lastElement)) {
+	while ((position == -1) && (firstElement <= lastElement)) {
 		// set middle to the average of first element and last element (truncate if necessary)
 		middle = (firstElement + lastElement) / 2;
 		//compare the ISBN passed in as a parameter bISBN with the ISBN stored in the middle Book of the books array
@@ -97,7 +97,7 @@ Book ISBNList::getBook(unsigned long long bISBN) {
 		if (comparison == 0) {
 			position = middle;	//set the position to middle
 		}
-		else if (comparison > 0) {
+		else if (comparison < 0) {
 			// if bISBN is less than the that of middle Book, set lastElement to middle
 			lastElement = middle - 1;
 		}
@@ -105,10 +105,6 @@ Book ISBNList::getBook(unsigned long long bISBN) {
 			// If bISBN is greater than the middle Book, set firstElement to middle + 1
 			firstElement = middle + 1;
 		}
-	}
-	//if the Book is not found in the books array
-	if (position == -1) {
-		throw "Book not found.";		//throw an exception saying that the Book was not found
 	}
 
 	//return the Book at the position in which it was found in the books array

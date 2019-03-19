@@ -66,13 +66,13 @@ Go through every book in the array
 return the ISBNList
 */
 
-ISBNList TitleList::getBooks(std::string author) {
+ISBNList TitleList::getBooks(std::string title) {
 	int numOfBooksAdded = 0;
 	const int numBooks = size;
 	ISBNList bl;
 	for (int i = 0; i < size; i++) {	//go through every book in the books array
 		//compare the current book's title with the title name provided by the user
-		if (compare(books[i].getAuthor(), author) == 0) {
+		if (compare(books[i].getTitle(), title) == 0) {
 			bl.addBook(books[i]);	//if a book with that title name exists, add the book to an ISBNList
 			numOfBooksAdded++;	//increase the number of books added to ISBNList by one
 		}

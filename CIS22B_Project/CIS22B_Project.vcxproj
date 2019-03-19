@@ -119,7 +119,9 @@
     <ClInclude Include="AuthorList.h" />
     <ClInclude Include="Book.h" />
     <ClInclude Include="BookList.h" />
+    <ClInclude Include="Cashier.h" />
     <ClInclude Include="CostList.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="ISBNList.h" />
     <ClInclude Include="QuantityList.h" />
     <ClInclude Include="Report.h" />
@@ -130,8 +132,10 @@
     <ClCompile Include="AuthorList.cpp" />
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="BookList.cpp" />
+    <ClCompile Include="Cashier.cpp" />
     <ClCompile Include="CIS22B_Project.cpp" />
     <ClCompile Include="CostList.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="ISBNList.cpp" />
     <ClCompile Include="QuantityList.cpp" />
     <ClCompile Include="Report.cpp" />
