@@ -157,14 +157,16 @@ int main() {
 				case kCashReview:
 				{
 					cout << "Here is the current cart" << endl;
-					cout << left << setw(10) << "Quantity" << left << setw(10) << "Name" << left << setw(10) << "ISBN";
-					cout << left << setw(10) << "Price" << left << setw(10) << "Total" << endl;
-					cout << "----------------------------------------------------------------" << endl;
+					cout << left << setw(20) << "Quantity" << left << setw(20) << "ISBN" << left << setw(40) << "Name";
+					cout << left << setw(20) << "Price" << left << setw(20) << "Total" << endl;
+					cout << "--------------------------------------------------------------------------------------";
+					cout << "--------------------" <<endl;
 					cashier.printCart();
-					cout << "----------------------------------------------------------------" << endl;
-					cout << left << setw(40) << "Subtotal" << left << "$" << cashier.getSubTotal() << endl;
-					cout << left << setw(40) << "Tax(9%)" << left << "$" << cashier.getSalesTax() << endl;
-					cout << left << setw(40) << "Total" << left << "$" << cashier.getSubTotal() + cashier.getSalesTax() << endl;
+					cout << "--------------------------------------------------------------------------------------";
+					cout << "--------------------" << endl;
+					cout << left << setw(80) << "Subtotal" << left << "$" << cashier.getSubTotal() << endl;
+					cout << left << setw(80) << "Tax(9%)" << left << "$" << cashier.getSalesTax() << endl;
+					cout << left << setw(80) << "Total" << left << "$" << cashier.getSubTotal() + cashier.getSalesTax() << endl;
 
 
 					cout << "Enter a number from the following menu to continue." << endl;

@@ -119,7 +119,8 @@ void Cashier::printCart() {
 	mpCartList->sortBooks();
 	for (int i = 0; i < size; i++) {
 		Book b = mpCartList->getBooks()[i];
-		std::cout << b.getISBN() << ", " << b.getTitle() << ", " << b.getQuantity() << ", " << b.getQuantity() * b.getRetail() << std::endl;
+		std::cout << std::setw(20) << b.getQuantity() << std::setw(20) << b.getISBN() << std::setw(40) << b.getTitle();
+		std::cout << std::setw(20) << b.getRetail() << std::setw(20) << b.getQuantity() * b.getRetail() << std::endl;
 	}
 }
 
