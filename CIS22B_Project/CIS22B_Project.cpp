@@ -191,7 +191,7 @@ int main() {
 					cout << kCashRemove << ". Remove a book from the cart" << endl;
 					cout << kCashReview << ". Review the cart and finish the purchase" << endl;
 					cout << kCashExit << ". Exit the Cashier" << endl;
-					cout << kCashExitProgram << ". Exit the program" << endl;
+					cout << kCashExitProgram << ". Exit the Program" << endl;
 					std::cin >> cashierMainMenuChoice;
 
 					// checking for good input
@@ -214,7 +214,7 @@ int main() {
 							std::cout << "Enter The quantity of the book you would like to add" << endl;
 							std::cin >> quantityOfBook;
 
-							cashier.ISBNArrayAdd(CInputISBN, quantityOfBook);
+							cashier.addToCart(CInputISBN, quantityOfBook);
 						}
 						catch (Cashier::isbnDoesNotExistException) {	// inform user if isbn entered doesn't exist
 							std::cout << " Error: Book does not exist." << endl;
@@ -223,7 +223,7 @@ int main() {
 							std::cout << "Not enough books in stock." << endl;
 						}
 
-						// asksing user for continuity 
+						// asking user for continuity 
 						std::cout << "Would you like to add another book? Enter the number from the menu " << endl;
 						std::cout << "1. Yes" << endl;
 						std::cout << "2. No" << endl;
@@ -290,14 +290,16 @@ int main() {
 				{
 					// dispalys what's in cart, price, subtotal, tax, and total
 					cout << "Here is the current cart" << endl;
-					cout << left << setw(10) << "Quantity" << left << setw(10) << "Name" << left << setw(10) << "ISBN";
-					cout << left << setw(10) << "Price" << left << setw(10) << "Total" << endl;
-					cout << "----------------------------------------------------------------" << endl;
+					cout << left << setw(20) << "Quantity" << left << setw(20) << "ISBN" << left << setw(40) << "Name";
+					cout << left << setw(20) << "Price" << left << setw(20) << "Total" << endl;
+					cout << "--------------------------------------------------------------------------------------";
+					cout << "--------------------" <<endl;
 					cashier.printCart();
-					cout << "----------------------------------------------------------------" << endl;
-					cout << left << setw(40) << "Subtotal" << left << "$" << cashier.getSubTotal() << endl;
-					cout << left << setw(40) << "Tax(9%)" << left << "$" << cashier.getSalesTax() << endl;
-					cout << left << setw(40) << "Total" << left << "$" << cashier.getSubTotal() + cashier.getSalesTax() << endl;
+					cout << "--------------------------------------------------------------------------------------";
+					cout << "--------------------" << endl;
+					cout << left << setw(80) << "Subtotal" << left << "$" << cashier.getSubTotal() << endl;
+					cout << left << setw(80) << "Tax(9%)" << left << "$" << cashier.getSalesTax() << endl;
+					cout << left << setw(80) << "Total" << left << "$" << cashier.getSubTotal() + cashier.getSalesTax() << endl;
 
 					// asks if user would like to purchase order
 					cout << "Enter a number from the following menu to continue." << endl;
