@@ -8,35 +8,36 @@
 class Cashier 
 {
 protected:
-	ISBNList* mpCartList;
-	BookList* mpInventory;
-	unsigned long long int mInputISBN;
-//	Book cartList[50];
+	ISBNList* mpCartList; //member variable for ISBNList objects
+	BookList* mpInventory; //member variable for BookList objects
+	unsigned long long int mInputISBN; //user input ISBN
 public:
-	class isbnDoesNotExistException {};
-	class negativeQtyException {};
-	class notEnoughInStockException {};
+	class isbnDoesNotExistException {}; //empty class for exceptions
+	class negativeQtyException {}; //empty class for exceptions
+	class notEnoughInStockException {}; //empty class for exceptions
 
-	Cashier(BookList*); 
-	~Cashier();
+	Cashier(BookList*); //constructor
+	~Cashier(); //destructor
 
-	//getter functions
+	//basic getter function for user entered isbn
 	unsigned long long int getInputISBN() const;
 
 
-	//setter functions
+	//basic setter function for user entered isbn
 	void setInputISBN(unsigned long long int);
 
-	//put isbn sorted book object into cart array 
-	void ISBNArrayAdd(unsigned long long int, int);
+	//function to put isbn sorted book object into cart array 
+	void addToCart(unsigned long long int, int);
 	
-	// function to subtract from cart
+	//function to subtract from cart
 	int removeFromCart(unsigned long long, int);
+	
 	// function to subtract/add books from inventory list file
 	void updateInventory(std::string);
+	
 	// function to print isbn, name quantity, and price values from cart
 	void printCart();
 	
-	double getSalesTax();
-	double getSubTotal();
+	double getSalesTax(); //function to multiply sales tax to price
+	double getSubTotal(); //function to multiply add total prices in cart to obtain a subtotal
 };

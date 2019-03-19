@@ -67,7 +67,7 @@ int main() {
 					cout << kCashRemove << ". Remove a book from the cart" << endl;
 					cout << kCashReview << ". Review the cart and finish the purchase" << endl;
 					cout << kCashExit << ". Exit the Cashier" << endl;
-					cout << kCashExitProgram << ". Exit the program" << endl;
+					cout << kCashExitProgram << ". Exit the Program" << endl;
 					std::cin >> cashierMainMenuChoice;
 
 					while (cashierMainMenuChoice > 5 || cashierMainMenuChoice < 1)
@@ -88,10 +88,10 @@ int main() {
 							std::cout << "Enter The quantity of the book you would like to add" << endl;
 							std::cin >> quantityOfBook;
 
-							cashier.ISBNArrayAdd(CInputISBN, quantityOfBook);
+							cashier.addToCart(CInputISBN, quantityOfBook);
 						}
 						catch (Cashier::isbnDoesNotExistException) {
-							std::cout << " Error: Book does not exist." << endl;
+							std::cout << "Error: Book does not exist." << endl;
 						}
 						catch (Cashier::notEnoughInStockException) {
 							std::cout << "Not enough books in stock." << endl;
