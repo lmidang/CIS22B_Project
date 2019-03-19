@@ -114,7 +114,7 @@ int BookList::addBook(Book b) {
 	int index = doesBookExist(b);		//check is Book object b already exists
 	if (index > -1) {					//if the book object already exists
 		//add the quantity of b to the quantity of the same book already existing inside the books array
-		books[index].setQuantity(b.getQuantity() + books[index].getQuantity());
+		books[index].setQuantity(addBookQty(b, books[index]));
 	}
 	else {	//if the book doesn't exist already
 		Book* bl = new Book[++size];	//create a new Book array with size + 1
