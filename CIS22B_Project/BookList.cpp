@@ -196,8 +196,8 @@ void BookList::saveBookListData(std::string fileName) {
 		Book b = books[i];	//goes through every book in the books array
 							//prints the information for all the books into a file
 		outputStream << b.getISBN() << "," << b.getTitle() << "," << b.getAuthor() << ","
-			<< b.getPublish() << "," << b.getDateAdd() << "," << b.getQuantity() << "," << std::fixed << std::setprecision(2)
-			<< b.getWholeSale() << "," << std::fixed <<std:: setprecision(2) << b.getRetail() << std::endl;
+			<< b.getPublish() << "," << b.getDateAdd() << "," << b.getQuantity() << ","
+			<< b.getWholeSale() << "," << b.getRetail() << std::endl;
 	}
 }
 

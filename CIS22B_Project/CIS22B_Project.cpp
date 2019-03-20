@@ -11,7 +11,8 @@ using namespace std;
 // enum for the state of the module or each individual module
 enum moduleType { kMenu, kCashier, kInventory, kReport, kExit };
 enum CashierMenu { kCashMenu, kCashAdd, kCashRemove, kCashReview, kCashExit, kCashExitProgram };
-enum InventoryMenu {kInvMenu, kInvLookUp, kInvExit, kInvExitProgram, kInvEnterAdmin, kSaveInventory, kInvAddBook, kInvBookDisplay};
+enum InventoryMenu {kInvMenu, kInvLookUp, kInvExit, kInvExitProgram, 
+	kInvEnterAdmin, kSaveInventory, kInvAddBook, kInvBookDisplay};
 
 // password to enter admin mode
 const string adminPass = "thisIsNotAPassword";
