@@ -12,7 +12,7 @@ BookList::BookList() {
 /*
 Two argument constructor that takes a pointer to an array of Books and a size as its arguments.
 An array of Books is created with the size argument
-	each value is copied from Book array b to Book array books using a for loop
+each value is copied from Book array b to Book array books using a for loop
 */
 BookList::BookList(Book *b, int s) {
 	books = new Book[s];	//array of Books is created with size s
@@ -38,8 +38,8 @@ BookList::BookList(const BookList& bl) {
 
 /*
 checks if the Book array exists
-	deletes the Book array
-	sets the Book array address to null
+deletes the Book array
+sets the Book array address to null
 */
 BookList::~BookList() {
 	if (books != nullptr) {
@@ -67,8 +67,8 @@ Book* BookList::getBooks() {
 /*
 Function to check if the Book exists in the Book array by using linear search
 Takes one Book object as its argument
-	Checks each Book's ISBN in the books array to see if they match
-		returns the position of the book in the books array
+Checks each Book's ISBN in the books array to see if they match
+returns the position of the book in the books array
 */
 int BookList::doesBookExist(Book b) {	// just going to go with linear search to make it easy
 	for (int i = 0; i < size; i++) {				//uses linear seach to go through each element of the books array
@@ -81,9 +81,9 @@ int BookList::doesBookExist(Book b) {	// just going to go with linear search to 
 
 /*
 Function to check if the Book exists in the Book array by using linear search
-Takes one unsigned long long as its argument
-	Checks each Book's ISBN in the books array to see if they match
-		returns the position of the book in the books array
+Takes one string as its argument
+Checks each Book's ISBN in the books array to see if they match
+returns the position of the book in the books array
 */
 
 int BookList::doesBookExist(std::string isbn) {
@@ -98,16 +98,16 @@ int BookList::doesBookExist(std::string isbn) {
 
 /*
 function to add a book to the books array
-Takes one Book object as its argument 
+Takes one Book object as its argument
 Checks if the Book already exists in the books array y passing it to the doesBookExist() function
-if the book exists 
-	just change the quantity of the book
+if the book exists
+just change the quantity of the book
 if the book doesn't exist
-	create a new Book array with a bigger size
-		copy all the books from the books array to the new array 
-	place the object passed as an argument as the last book in the array
-	delete the books array 
-	copy the address of the new Book array into the books array
+create a new Book array with a bigger size
+copy all the books from the books array to the new array
+place the object passed as an argument as the last book in the array
+delete the books array
+copy the address of the new Book array into the books array
 return the new size of the array
 */
 int BookList::addBook(Book b) {
@@ -132,16 +132,16 @@ int BookList::addBook(Book b) {
 
 /*
 function to remove a book from the books array
-takes a Book object as its argument 
+takes a Book object as its argument
 checks if the Book already exists in the books array
-if the book doesn't exist 
-	return -1
-if the book exists 
-	create a new Book array bl with a bigger size
-		copy the books from the array books to bl until index where the book being removed exists
-		copy the books from the next index in the array books to the current index in bl until the end of the bl array
-	decrease the size by one 
-	copy the address of the new Book array into the array books
+if the book doesn't exist
+return -1
+if the book exists
+create a new Book array bl with a bigger size
+copy the books from the array books to bl until index where the book being removed exists
+copy the books from the next index in the array books to the current index in bl until the end of the bl array
+decrease the size by one
+copy the address of the new Book array into the array books
 return the new size of the books array
 */
 int BookList::removeBook(Book b) {
@@ -155,7 +155,7 @@ int BookList::removeBook(Book b) {
 			bl[i] = books[i];	//the books that come before index are simply just copied from the books array to the bl array
 		}
 		//the books that come after index are copied from the books array and placed in the previous index of the bl array
-		for (int i = index; i < size; i++) {					
+		for (int i = index; i < size; i++) {
 			bl[i] = books[i + 1];
 		}
 		delete[size + 1] books;	//delete the books array
@@ -166,12 +166,12 @@ int BookList::removeBook(Book b) {
 
 /*
 function to change the information of one book in the books array
-takes one Book object b as its argument 
+takes one Book object b as its argument
 checks if the book exists in the books array
 if the book exists
-	changes the book already existing in the array at that index by copying Book b into the array 
+changes the book already existing in the array at that index by copying Book b into the array
 if the book doesn't exist in the array
-	throw an expection saying that the book doesn't exist
+throw an expection saying that the book doesn't exist
 */
 void BookList::updateBookInfo(Book b) {
 	int index = doesBookExist(b);
@@ -187,17 +187,17 @@ void BookList::updateBookInfo(Book b) {
 function to save the information of a Book into a file
 takes a file name as its argument.
 opens the file
-	copies the information for each book in the books array into the file.
+copies the information for each book in the books array into the file.
 */
 void BookList::saveBookListData(std::string fileName) {
 	std::ofstream outputStream;
 	outputStream.open(fileName);	//opens a file with the filename provided as a parameter
 	for (int i = 0; i < size; i++) {
 		Book b = books[i];	//goes through every book in the books array
-		//prints the information for all the books into a file
-		outputStream << b.getISBN() << "," << b.getTitle() << "," << b.getAuthor() << ","
-			<< b.getPublish() << "," << b.getDateAdd() << "," << b.getQuantity() << ","
-			<< b.getWholeSale() << "," << b.getRetail() << std::endl;
+							//prints the information for all the books into a file
+		outputStream << b.getISBN() << std::setw(10) << b.getTitle() << std::setw(10) << b.getAuthor() <<std:: setw(10)
+			<< b.getPublish() << std::setw(10) << b.getDateAdd() << std::setw(10) << b.getQuantity() << std::setw(10) << std::fixed << std::setprecision(2)
+			<< b.getWholeSale() << std::setw(10) << std::fixed <<std:: setprecision(2) << b.getRetail() << std::endl;
 	}
 }
 
@@ -207,17 +207,17 @@ function to print the information for each book in the books array onto the scre
 void BookList::printBooks() {
 	for (int i = 0; i < size; i++) {
 		Book b = books[i];	//goes through every book in the books array
-		//prints the information for all the books onto the screen
-		std::cout << b.getISBN() << "," << b.getTitle() << "," << b.getAuthor() << ","
-			<< b.getPublish() << "," << b.getDateAdd() << "," << b.getQuantity() << ","
-			<< b.getWholeSale() << "," << b.getRetail() << std::endl;
+							//prints the information for all the books onto the screen
+		std::cout << b.getISBN() << std::setw(10) << b.getTitle() << std::setw(10) << b.getAuthor() << std::setw(10)
+			<< b.getPublish() << std::setw(10) << b.getDateAdd() << std::setw(10) << b.getQuantity() << std::setw(10) << std::fixed << std::setprecision(2)
+			<< b.getWholeSale() << std::setw(10) << std::fixed << std::setprecision(2) << b.getRetail() << std::endl;
 	}
 }
 
 /*
 function to print the wholesale cost for each book in the books array
-	prints the ISBN, Title, and Wholesale Cost for all the books in the list
-	calculates the total wholesale cost by adding the wholesale costs together for all the books
+prints the ISBN, Title, and Wholesale Cost for all the books in the list
+calculates the total wholesale cost by adding the wholesale costs together for all the books
 returns the total wholesale cost for all the books
 */
 double BookList::printWholesaleValue() {
@@ -225,7 +225,7 @@ double BookList::printWholesaleValue() {
 
 	for (int i = 0; i < size; i++) {
 		Book b = books[i];			//goes through each book in the books array
-		std::cout << b.getISBN() << "," << b.getTitle() << ","	//prints the ISBN, Title, and wholesale cost for all the books onto the screen
+		std::cout << b.getISBN() << std::setw(10) << b.getTitle() << std::setw(10) << std::fixed << std::setprecision(2)	//prints the ISBN, Title, and wholesale cost for all the books onto the screen
 			<< b.getWholeSale() << std::endl;
 		//calculates the total wholesale cost by adding the wholesale cost for all the books in the books array
 		totalWholesale += b.getWholeSale();
@@ -235,8 +235,8 @@ double BookList::printWholesaleValue() {
 
 /*
 function to print the retail price for each book in the books array
-	prints the ISBN, Title, and Retail Price for all the books in the list
-	calculates the total retail price by adding the retail prices together for all the books
+prints the ISBN, Title, and Retail Price for all the books in the list
+calculates the total retail price by adding the retail prices together for all the books
 returns the total retail price for all the books
 */
 double BookList::printRetailValue() {
@@ -244,8 +244,8 @@ double BookList::printRetailValue() {
 
 	for (int i = 0; i < size; i++) {
 		Book b = books[i];		//goes through each book in the books array
-		//print the ISBN, title, and wholesale cost for every book in the books array
-		std::cout << b.getISBN() << "," << b.getTitle() << ", " << b.getRetail() << std::endl;
+								//print the ISBN, title, and wholesale cost for every book in the books array
+		std::cout << b.getISBN() << std::setw(10) << b.getTitle() << std::setw(10) << std::fixed << std::setprecision(2) << b.getRetail() << std::endl;
 		//calculates the total wholesale cost by adding the wholesale cost for all the books in the books array
 		totalRetail += b.getRetail();
 	}
