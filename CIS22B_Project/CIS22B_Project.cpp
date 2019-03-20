@@ -84,7 +84,7 @@ while moduleState is not kExit
 				else
 					set invState to invModeInput
 					for admin sets invState according to the menu displayed
-			case cashState is kInvLookUp
+			case invState is kInvLookUp
 				set bookExists to false
 				displays search options
 				keeps asking user for input in range
@@ -105,21 +105,21 @@ while moduleState is not kExit
 					case default: print invalid
 				catch exception that book doesn't exist
 					set invState to kInvLookUp
-			case cashState is kInvExit
+			case invState is kInvExit
 				set moduleState to kMenu
-			case cashState is kInvExitProgram
+			case invState is kInvExitProgram
 				set mdoeulState to kExit
-			case cashState is kInvEnterAdmin
+			case invState is kInvEnterAdmin
 				receives passInput
 				if passWord is right, set isAdmin to true
 				else, set invState to kMenu
-			case cashState is kSaveInventory
+			case invState is kSaveInventory
 				saves database from inventory to file
 				sets invState to kMenu
-			case cashState is kInvAddBook
+			case invState is kInvAddBook
 				try adding book from inventory
 				catch if book already exists, notify the user to check the lookup
-			case cashState is kInvBookDisplay
+			case invState is kInvBookDisplay
 				print the bookLookedUp
 				if user is admin, editBook through inventory
 				set invState kInvLookUp 
