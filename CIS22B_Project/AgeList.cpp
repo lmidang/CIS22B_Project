@@ -39,8 +39,10 @@ void AgeList::sortBooks() {
 		//for loop to go through the Books in the array after the current Book
 		for (int index = startIndex + 1; index < getSize(); index++) {
 			//if there is an age in the books array that comes before the current age save it.
-			minAge = minimum(minAge, books[index].getDateAdd());
-			minIndex = index;
+			if (compare(minAge, books[index].getDateAdd()) < 0) {
+				minAge = minimum(minAge, books[index].getDateAdd());
+				minIndex = index;
+			}
 		}
 		//switch the current Book with the Book that has the smallest age.
 		Book tempB = books[minIndex];

@@ -38,14 +38,16 @@ void AuthorList::sortBooks() {
 	int minIndex;		// index for the minimum value
 
 	//for loop to go through all the Books except the last one
-	for (startIndex = 0; startIndex < (size - 1); startIndex++) {
+	for (startIndex = 0; startIndex < size - 1; startIndex++) {
 		minIndex = startIndex;	// set minimum value index to starting index
 		std::string minAuthor = books[minIndex].getAuthor();	//the current author is the smallest author
 		//for loop to go through the Books in the array after the current Book
 		for (int index = startIndex + 1; index < size; index++) {
 			//if there is an author in the books array that comes before the current author save it.
-			minAuthor = minimum(minAuthor, books[index].getAuthor());
-			minIndex = index;
+			if (compare(minAuthor, books[index].getAuthor()) < 0) {
+				minAuthor = minimum(minAuthor, books[index].getAuthor());
+				minIndex = index;
+			}
 		}
 		//switch the current Book with the Book that has the smallest author.
 		Book tempB = books[minIndex];

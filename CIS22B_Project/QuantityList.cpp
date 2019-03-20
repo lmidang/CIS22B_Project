@@ -20,34 +20,36 @@ QuantityList::QuantityList(const BookList& bl) : BookList(bl) {
 /*
 Function to sort the books by Quantity
 Go through all the Books (except the last one) in the Book list
-		Save The current Book's Quantity as the smallest Quantity.
-		Save the current index as the smallest index.
+		Save The current Book's Quantity as the largest Quantity.
+		Save the current index as the largest index.
 		Compare the current Book's Quantity with the remaining Books' Quantitys in the Book list
-		If a Book's Quantity smaller than the current Book's Quantity is found:
-			Save that Book's Quantity as the smallest Quantity
-			Save that index as the smallest index
-		Switch the current Book with the Book that has the smallest Quantity.
+		If a Book's Quantity larger than the current Book's Quantity is found:
+			Save that Book's Quantity as the largest Quantity
+			Save that index as the max index
+		Switch the current Book with the Book that has the largest Quantity.
 Continue until all the Books have been compared
 */
 void QuantityList::sortBooks() {
 
 	int startIndex;		// starting index
-	int minIndex;		// index for the minimum value
+	int maxIndex;		// index for the max value
 
 	//for loop to go through all the Books except the last one
 	for (startIndex = 0; startIndex < (size - 1); startIndex++) {
-		minIndex = startIndex;	// set minimum value index to starting index
-		int minQty = books[minIndex].getQuantity();	//the currentQuantity is the smallest Quantity
+		maxIndex = startIndex;	// set max value index to starting index
+		int maxQty = books[maxIndex].getQuantity();	//the currentQuantity is the largest Quantity
 
 		//for loop to go through the Books in the array after the current Book
 		for (int index = startIndex + 1; index < size; index++) {
 			//if there is an Quantity in the books array that comes before the current Quantity save it.
-			minQty = minimum(minQty, books[index].getQuantity());
-			minIndex = index;
+			if (compare(maxQty, books[index].getQuantity()) > 0) {
+				maxQty = maximum(maxQty, books[index].getQuantity());
+				maxIndex = index;
+			}
 		}
-		//switch the current Book with the Book that has the smallest Quantity.
-		Book tempB = books[minIndex];
-		books[minIndex] = books[startIndex];
+		//switch the current Book with the Book that has the largest Quantity.
+		Book tempB = books[maxIndex];
+		books[maxIndex] = books[startIndex];
 		books[startIndex] = tempB;
 	}
 }

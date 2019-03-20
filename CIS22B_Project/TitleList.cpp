@@ -42,8 +42,10 @@ void TitleList::sortBooks() {
 		//for loop to go through the Books in the array after the current Book
 		for (int index = startIndex + 1; index < size; index++) {
 			//if there is an Title in the books array that comes before the current Title save it.
-			minTitle = minimum(minTitle, books[index].getTitle());
-			minIndex = index;
+			if (compare(minTitle, books[index].getTitle()) < 0) {
+				minTitle = minimum(minTitle, books[index].getTitle());
+				minIndex = index;
+			}
 		}
 		//switch the current Book with the Book that has the smallest Title.
 		Book tempB = books[minIndex];

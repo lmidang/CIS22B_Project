@@ -49,8 +49,10 @@ void ISBNList::sortBooks() {
 		//for loop to go through the Books in the array after the current Book
 		for (int index = startIndex + 1; index < size; index++) {
 			//if there is an ISBN in the books array that comes before the current ISBN save it.
-			minISBN = minimum(minISBN, books[index].getISBN());
-			minIndex = index;
+			if (compare(minISBN, books[index].getISBN()) < 0) {
+				minISBN = minimum(minISBN, books[index].getISBN());
+				minIndex = index;
+			}
 		}
 		//switch the current Book with the Book that has the smallest ISBN.
 		Book tempB = books[minIndex];
