@@ -1,6 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "BookList.h"
-#include <iomanip>
 
 /*
 Default constructor to create an array of Books of size 0
@@ -196,9 +195,9 @@ void BookList::saveBookListData(std::string fileName) {
 	for (int i = 0; i < size; i++) {
 		Book b = books[i];	//goes through every book in the books array
 							//prints the information for all the books into a file
-		outputStream << b.getISBN() << std::setw(10) << b.getTitle() << std::setw(10) << b.getAuthor() <<std:: setw(10)
-			<< b.getPublish() << std::setw(10) << b.getDateAdd() << std::setw(10) << b.getQuantity() << std::setw(10) << std::fixed << std::setprecision(2)
-			<< b.getWholeSale() << std::setw(10) << std::fixed <<std:: setprecision(2) << b.getRetail() << std::endl;
+		outputStream << b.getISBN() << "," << b.getTitle() << "," << b.getAuthor() << ","
+			<< b.getPublish() << "," << b.getDateAdd() << "," << b.getQuantity() << "," << std::fixed << std::setprecision(2)
+			<< b.getWholeSale() << "," << std::fixed <<std:: setprecision(2) << b.getRetail() << std::endl;
 	}
 }
 
