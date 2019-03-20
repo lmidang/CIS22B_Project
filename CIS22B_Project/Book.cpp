@@ -14,7 +14,7 @@ the date member variable is initialized as 0000/00/00 (YYYY-MM-DD)
 
 Book::Book() {
 
-	mISBN = 0;
+	mISBN = "00000000";
 	mTitle = " ";
 	mAuthor = " ";
 	mPublisher = " ";
@@ -28,7 +28,7 @@ Book::Book() {
 eight argument constructor that initializes all the member variables
 */
 
-Book::Book(unsigned long long i, std::string t, std::string a, std::string p, std::string d, int q, double w, double r) {
+Book::Book(std::string i, std::string t, std::string a, std::string p, std::string d, int q, double w, double r) {
 
 	mISBN = i;
 	mTitle = t;
@@ -43,7 +43,7 @@ Book::Book(unsigned long long i, std::string t, std::string a, std::string p, st
 /*
 mutator method for the mISBN member variable
 */
-void Book::setISBN(unsigned long long i) {
+void Book::setISBN(std::string i) {
 
 	mISBN = i;
 
@@ -114,7 +114,7 @@ void Book::setRetail(double r) {
 /*
 accessor method for the mISBN member variable
 */
-unsigned long long Book::getISBN() const {
+std::string Book::getISBN() const {
 
 	return mISBN;
 

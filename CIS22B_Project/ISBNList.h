@@ -14,5 +14,5 @@ public:
 	//function that uses selection sort to sort all the books in the books array by ISBN
 	void sortBooks();
 	//Function that finds a Book in the books array using binary search
-	Book getBook(unsigned long long);
+	Book getBook(std::string);
 };

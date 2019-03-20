@@ -10,7 +10,7 @@ Inventory::Inventory(BookList* pB)
 Inventory::~Inventory() {
 };
 
-Book Inventory::lookUpISBN(unsigned long long i) {
+Book Inventory::lookUpISBN(std::string i) {
 	ISBNList isbnList = ISBNList(*mpBL);
 	isbnList.sortBooks();
 	if (isbnList.doesBookExist(i) > -1) {
@@ -72,7 +72,7 @@ Book Inventory::lookUpTitle(std::string s) {
 void Inventory::addBook()
 {
 	Book bookToAdd;
-	int isbn;
+	std::string isbn;
 	std::string title;
 	std::string author;
 	std::string publisher;
@@ -127,7 +127,7 @@ void Inventory::editBook(Book b)
 {
 	Book editedBook = b;
 	int index = 0;
-	int isbn;
+	std::string isbn;
 	std::string title;
 	std::string author;
 	std::string publisher;

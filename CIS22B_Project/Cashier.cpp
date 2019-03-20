@@ -9,7 +9,7 @@
 
 Cashier::Cashier(BookList* bl) //constructor with 
 {
-	mInputISBN = 0; //sets isbn value to deafult of zero
+	mInputISBN = "0000000"; //sets isbn value to deafult of zero
 	mpCartList = new ISBNList(); //new dynamically allocated class created from ISBNList
 	mpInventory = bl; //copies the address of a pointer to a ISBNList class
 }
@@ -23,14 +23,14 @@ Cashier::~Cashier(){
 }
 
 //getter function
-unsigned long long int Cashier::getInputISBN() const
+std::string Cashier::getInputISBN() const
 {
 	return mInputISBN;
 }
 
 
 //setter function with exception
-void Cashier::setInputISBN(unsigned long long int I)
+void Cashier::setInputISBN(std::string I)
 {
 	if (mpInventory->doesBookExist(I) < 0)
 	{
@@ -40,7 +40,7 @@ void Cashier::setInputISBN(unsigned long long int I)
 }
 
 //function to add book objects to a cart
-void Cashier::addToCart(unsigned long long int ISBN, int qty)
+void Cashier::addToCart(std::string ISBN, int qty)
 {
 	int index = mpInventory->doesBookExist(ISBN); //variable index gets position of book 
 	int cartQty = qty;
@@ -73,7 +73,7 @@ void Cashier::addToCart(unsigned long long int ISBN, int qty)
 }
 
 //function to subtract book objects from the cart
-int Cashier::removeFromCart(unsigned long long isbn, int qty)
+int Cashier::removeFromCart(std::string isbn, int qty)
 {
 	int index = mpCartList->doesBookExist(isbn); //variable index gets position of book 
 	if (index > -1)

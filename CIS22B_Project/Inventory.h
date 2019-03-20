@@ -21,7 +21,7 @@ public:
 
 	Inventory(BookList*);        //constructor
 	~Inventory();
-	Book lookUpISBN(unsigned long long);
+	Book lookUpISBN(std::string);
 	Book lookUpTitle(std::string);
 	Book lookUpAuthor(std::string);
 	void addBook();

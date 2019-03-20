@@ -10,7 +10,7 @@ class Cashier
 protected:
 	ISBNList* mpCartList; //member variable for ISBNList objects
 	BookList* mpInventory; //member variable for BookList objects
-	unsigned long long int mInputISBN; //user input ISBN
+	std::string mInputISBN; //user input ISBN
 public:
 	class isbnDoesNotExistException {}; //empty class for exceptions
 	class negativeQtyException {}; //empty class for exceptions
@@ -20,17 +20,17 @@ public:
 	~Cashier(); //destructor
 
 	//basic getter function for user entered isbn
-	unsigned long long int getInputISBN() const;
+	std::string getInputISBN() const;
 
 
 	//basic setter function for user entered isbn
-	void setInputISBN(unsigned long long int);
+	void setInputISBN(std::string);
 
 	//function to put isbn sorted book object into cart array 
-	void addToCart(unsigned long long int, int);
+	void addToCart(std::string, int);
 	
 	//function to subtract from cart
-	int removeFromCart(unsigned long long, int);
+	int removeFromCart(std::string, int);
 	
 	// function to subtract/add books from inventory list file
 	void updateInventory(std::string);

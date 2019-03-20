@@ -44,7 +44,7 @@ void ISBNList::sortBooks() {
 	//for loop to go through all the Books except the last one
 	for (startIndex = 0; startIndex < (size - 1); startIndex++) {
 		minIndex = startIndex;	// set minimum value index to starting index
-		unsigned long long minISBN = books[minIndex].getISBN();	//the current ISBN is the smallest ISBN
+		std::string minISBN = books[minIndex].getISBN();	//the current ISBN is the smallest ISBN
 
 		//for loop to go through the Books in the array after the current Book
 		for (int index = startIndex + 1; index < size; index++) {
@@ -80,7 +80,7 @@ Return index of word.
 */
 
 
-Book ISBNList::getBook(unsigned long long bISBN) {
+Book ISBNList::getBook(std::string bISBN) {
 	int firstElement = 0;		// index of the first element to search through
 	int lastElement = size - 1;	// index of the last element to search through + 1
 	int middle;					// index of the middle element

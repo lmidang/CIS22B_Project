@@ -173,7 +173,7 @@ int main() {
 		}
 		case kCashier: {
 			Cashier cashier = Cashier(&bl); //declares cashier1 object
-			unsigned long long int CInputISBN; //local variable for input with class Cashier
+			std::string CInputISBN; //local variable for input with class Cashier
 			int cashierMainMenuChoice; //for main menu choices
 			int cashState = kCashMenu;
 			int yesOrNo; //to continue the program
@@ -410,7 +410,7 @@ int main() {
 					try {
 						switch (lookUpNumber) {
 						case 1: {	// search for book by isbn
-							int isbnSearch;
+							std::string isbnSearch;
 							cout << "Please enter the ISBN of the book you want to search. No dashes.\n";
 							std::cin >> isbnSearch;
 							bookLookedUp = inventory.lookUpISBN(isbnSearch);
@@ -586,7 +586,7 @@ int getData(string inputFileName, BookList &bl) {
 			Book b;
 
 			// reading values from the file into the appropriate variables for book b
-			unsigned long long isbn = stoull(line.substr(0, line.find(',')));
+			std::string isbn = line.substr(0, line.find(','));
 			line = line.substr(line.find(',') + 1);
 			string title = line.substr(0, line.find(','));
 			line = line.substr(line.find(',') + 1);

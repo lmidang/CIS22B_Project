@@ -9,7 +9,7 @@
 class Book {
 
 protected:
-	unsigned long long mISBN;	//member variables
+	std::string mISBN;	//member variables
 	std::string mTitle;
 	std::string mAuthor;
 	std::string mPublisher;
@@ -21,9 +21,9 @@ protected:
 public:
 
 	Book();	//default constructor
-	Book(unsigned long long, std::string, std::string, std::string, std::string, int, double, double);	//8 argument constructor
+	Book(std::string, std::string, std::string, std::string, std::string, int, double, double);	//8 argument constructor
 	//mutator methods
-	void setISBN(unsigned long long);
+	void setISBN(std::string);
 	void setTitle(std::string);
 	void setAuthor(std::string);
 	void setPublish(std::string);
@@ -32,7 +32,7 @@ public:
 	void setWholeSale(double);
 	void setRetail(double);
 	//accessor methods
-	unsigned long long getISBN() const;
+	std::string getISBN() const;
 	std::string getTitle() const;
 	std::string getAuthor() const;
 	std::string getPublish() const;

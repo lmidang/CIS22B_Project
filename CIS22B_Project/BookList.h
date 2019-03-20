@@ -64,7 +64,7 @@ public:
 	Book* getBooks();		//function to return the books array
 
 	int doesBookExist(Book);		//function to check if a Book exists in the books array
-	int doesBookExist(unsigned long long); 
+	int doesBookExist(std::string); 
 	int addBook(Book);				//function to add a book to the books array
 	int removeBook(Book);			//function to remove a book from the books array
 	void updateBookInfo(Book);		//function to change the information for a Book in the books array

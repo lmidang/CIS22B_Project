@@ -86,7 +86,7 @@ Takes one unsigned long long as its argument
 		returns the position of the book in the books array
 */
 
-int BookList::doesBookExist(unsigned long long isbn) {
+int BookList::doesBookExist(std::string isbn) {
 	for (int i = 0; i < size; i++) {				//uses linear seach to go through each element of the books array
 		if (isbn == books[i].getISBN()) {	//checks the ISBN argument with the Book in the books array's ISBN
 			return i;								//returns the position of the Book in the books array
