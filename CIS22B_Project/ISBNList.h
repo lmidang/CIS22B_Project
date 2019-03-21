@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef ISBNLIST_H
+#define ISBNLIST_H
+
 #include <iostream>
 #include "BookList.h"
 
@@ -16,3 +20,5 @@ public:
 	//Function that finds a Book in the books array using binary search
 	Book getBook(std::string);
 };
+
+#endif

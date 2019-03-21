@@ -208,22 +208,29 @@ Function to edit book in book array with 11 member variables
       Stores new date in string
     case is 6
       Prompts user to enter quantity
+	  while quantity is less than 0, keep asking
       Stores new quantity in string
     case is 7
       Prompts user to enter whole sale cost
+	  while wholesaleCost is less than 0, keep asking
       Stores new whole sale cost in string
     case is 8
       Prompts user to enter retail price
+	  while retailPrice is less than 0, keep asking
       Stores new retail price in string
     case is 9
       Asks user if editedBook needs to be deleted
       Deletes book entry
-  else returns null
+	default:
+	  indicate invalid answer and return to the case 1 menu
+	end switch
+checks if the book exists (in case it was removed)
+  updates book in inventory
 */
 void Inventory::editBook(Book b)
 {
 	Book editedBook = b;
-	int index = 0;
+	int index = 0;	// indicates what the user wants to change
 	std::string isbn;
 	std::string title;
 	std::string author;
@@ -294,6 +301,11 @@ void Inventory::editBook(Book b)
 		case 6:
 			std::cout << "Please enter the new quantity: ";
 			std::cin >> quantity;
+			while (quantity < 0) {
+				std::cout << "Please enter an appropriate number (0 or above)\n";
+				std::cin >> quantity;
+			}
+
 			editedBook.setQuantity(quantity);
 
 			index = 0;
@@ -301,6 +313,11 @@ void Inventory::editBook(Book b)
 		case 7:
 			std::cout << "Please enter the new WholesaleCost: ";
 			std::cin >> wholesaleCost;
+			while (wholesaleCost < 0) {
+				std::cout << "Please enter an appropriate number (0 or above)\n";
+				std::cin >> wholesaleCost;
+			}
+
 			editedBook.setWholeSale(wholesaleCost);
 
 			index = 0;
@@ -308,6 +325,10 @@ void Inventory::editBook(Book b)
 		case 8:
 			std::cout << "Please enter the new RetailPrice: ";
 			std::cin >> retailPrice;
+			while (retailPrice < 0) {
+				std::cout << "Please enter an appropriate number (0 or above)\n";
+				std::cin >> retailPrice;
+			}
 			editedBook.setRetail(retailPrice);
 
 			index = 0;
@@ -318,6 +339,7 @@ void Inventory::editBook(Book b)
 			if (willDelete == 0) {
 				mpBL->removeBook(editedBook);
 				index = 10;
+				std::cout << "Book was removed.\n";
 			}
 			else {
 				index = 0;
@@ -329,7 +351,9 @@ void Inventory::editBook(Book b)
 		}
 	}
 
-	mpBL->updateBookInfo(editedBook);
+	if (mpBL->doesBookExist(editedBook) >= 0) {
+		mpBL->updateBookInfo(editedBook);
+	}
 }
 /*
   Function takes name of file and sends it to saveBookListData function

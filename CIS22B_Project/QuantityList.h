@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef QUANTITY_H
+#define QUANTITY_H
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -19,3 +22,5 @@ public:
 	//function that prints the ISBN, Title, Author, and Quantity for all the books in the books array
 	void printBooks();
 };
+
+#endif

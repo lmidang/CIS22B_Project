@@ -1,5 +1,12 @@
 #define _CRT_SECURE_NO_WARNINGS
 
+/**
+*	Authors: Lynn Dang, Jason Ma, Christopher Pucci, Nithya Sree
+*	Section: CIS 22B
+*	Assignment: Serendipity Project
+*	This project accesses a data file of books and acts as a cashier, inventory viewer/modifier, and reporter. See PDF for further details on the project.
+*/
+
 #include <iostream>
 #include <fstream>
 #include "Report.h"

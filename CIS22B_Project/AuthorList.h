@@ -1,12 +1,11 @@
 #pragma once
 
+#ifndef AUTHORLIST_H
+#define AUTHORLIST_H
+
 #include <iostream>
-
 #include "BookList.h"
-
 #include "ISBNList.h"
-
-
 
 class AuthorList : public BookList {
 
@@ -25,3 +24,5 @@ public:
 	ISBNList getBooks(std::string);
 
 };
+
+#endif

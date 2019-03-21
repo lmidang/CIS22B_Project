@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef COSTLIST_H
+#define COSTLIST_H
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -19,3 +22,5 @@ public:
 	//function that prints the ISBN, Title, Author, and Wholesale Cost for all the books in the books array
 	void printBooks();
 };
+
+#endif

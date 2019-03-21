@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef AGELIST_H
+#define AGELIST_H
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -23,3 +26,5 @@ public:
 	void printBooks();
 
 };
+
+#endif

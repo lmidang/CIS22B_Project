@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef TITLELIST_H
+#define TITLELIST_H
+
 #include <iostream>
 #include "BookList.h"
 #include "ISBNList.h"
@@ -16,3 +20,5 @@ public:
 		//creates an ISBNList with all the books that have the title name provided by the user
 	ISBNList getBooks(std::string);
 };
+
+#endif

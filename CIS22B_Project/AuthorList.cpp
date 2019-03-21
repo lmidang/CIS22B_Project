@@ -8,7 +8,6 @@ It calls the base class's constructor and passes both the parameters to that con
 */
 AuthorList::AuthorList(Book b[], int s) : BookList(b, s) {
 
-
 }
 
 /*
@@ -16,7 +15,6 @@ Copy constructor that takes a constant reference to a BookList object as the par
 It calls the base class's constructor and passes the parameter to that constructor
 */
 AuthorList::AuthorList(const BookList& bl) : BookList(bl) {
-
 
 }
 
@@ -56,6 +54,7 @@ void AuthorList::sortBooks() {
 	}
 
 }
+
 /*
 Function that goes through all the books in the books array and 
 creates an ISBNList with all the books that have the name of the author provided by the user.
@@ -69,7 +68,6 @@ Go through every book in the array
 		break from the for loop
 return the ISBNList
 */
-
 ISBNList AuthorList::getBooks(std::string author) {
 	int numOfBooksAdded = 0;
 	const int numBooks = size;

@@ -1,6 +1,7 @@
+#pragma once
+
 #ifndef Inventory_H
 #define Inventory_H
-
 
 #include <iostream>
 #include <istream>

@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef CASHIER_H
+#define CASHIER_H
+
 #include<iostream>
 #include<iomanip>
 #include<string>
@@ -41,3 +45,5 @@ public:
 	double getSalesTax(); //function to multiply sales tax to price
 	double getSubTotal(); //function to multiply add total prices in cart to obtain a subtotal
 };
+
+#endif

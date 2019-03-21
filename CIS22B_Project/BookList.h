@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef BOOKLIST_H
+#define BOOLIST_H
+
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -75,3 +79,5 @@ public:
 	double printWholesaleValue();		//function to print the wholesale cost for all the books in the array and calculate the total wholesale cost
 	double printRetailValue();		//function to print the retail price for all the books in the array and calculate the total retail price
 };
+
+#endif
