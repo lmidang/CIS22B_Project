@@ -1,15 +1,26 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "Inventory.h"
+/*
+Argument constructor that passes object pB to Booklist class
+*/
 
 Inventory::Inventory(BookList* pB)
 {
 	mpBL = pB;
 }
-
+/*
+Default destructor
+*/
 Inventory::~Inventory() {
 };
-
+/*
+Function to look up ISBN numbers by user in a string
+  IBSNList object is created
+  Checks if book exists with ISBN passed as argument
+  Returns the string
+  Exception is thrown if it does not exist
+*/
 Book Inventory::lookUpISBN(std::string i) {
 	ISBNList isbnList = ISBNList(*mpBL);
 	isbnList.sortBooks();
@@ -20,11 +31,25 @@ Book Inventory::lookUpISBN(std::string i) {
 		throw bookDoesNotExistException();
 	}
 }
+/*
+Function to look up authors by user in string
+	AuthorList object is created and is sorted by authorList
 
+  Takes ISBN object as argument and passes it through getBooks string
+  Goes through object and checks if it exists
+  Exception is thrown if it does not exist
+
+  Asks user to select an option in AuthorList by typing the first number
+  with the options being the ISBN, Title, and Author of each book
+  if userSelection is greater than size of book or less than 0
+  User is asked to input a value in that range
+
+  Returns the book choosen from array
+*/
 Book Inventory::lookUpAuthor(std::string s) {
 	AuthorList authorList = AuthorList(*mpBL);
 	authorList.sortBooks();
-	
+
 	ISBNList isbnList = authorList.getBooks(s);
 	int size = isbnList.getSize();
 	if (size == 0) {
@@ -44,7 +69,22 @@ Book Inventory::lookUpAuthor(std::string s) {
 	}
 	return isbnList.getBooks()[userSelection];
 }
+/*
+Function to look up title by user in string
+	TitleList object is created and is sorted by titleList
 
+  Takes ISBN object as argument and passes it through getBooks string
+  Goes through object and checks if it exists
+  Exception is thrown if it does not exist
+
+  Asks user to select an option in TitleList by typing the first number
+  with the options being the ISBN, Title, and Author of each book
+  if userSelection is greater than size of book or less than 0
+  User is asked to input a value in that range
+
+  Returns the book choosen from array
+
+*/
 Book Inventory::lookUpTitle(std::string s) {
 	TitleList titleList = TitleList(*mpBL);
 	titleList.sortBooks();
@@ -68,7 +108,17 @@ Book Inventory::lookUpTitle(std::string s) {
 	}
 	return isbnList.getBooks()[userSelection];
 }
-
+/*
+  Function to add books with 9 member variables
+  Asks user for ISBN of book to add
+  Checks if it exists
+  If exists, user is asked to enter title, author,
+  publisher, date, quantity, whole sale cost, and retail price
+    While loop is used to prevent user from entering
+    a negetive integer value
+  Exception is thrown if it does not exist
+  Stores it in mpBL object
+*/
 void Inventory::addBook()
 {
 	Book bookToAdd;
@@ -134,7 +184,42 @@ void Inventory::addBook()
 	}
 
 }
-
+/*
+Function to edit book in book array with 11 member variables
+  While index is not 10
+  Switch statment to edit book based on user input
+    case is 0
+      Asks user which part of the book they want to edit
+			Displays edit menu options
+		case is 1
+			Prompts user to enter ISBN
+			Stores new ISBN in string
+		case is 2
+      Promps user to enter title
+      Stores new title in string
+    case is 3
+      Prompts user to enter author
+      Stores new author in string
+    case is 4
+      Prompts user to enter publisher
+      Stores new publisher in string
+    case is 5
+      Prompts user to enter date added in YYYY/MM/DD format
+      Stores new date in string
+    case is 6
+      Prompts user to enter quantity
+      Stores new quantity in string
+    case is 7
+      Prompts user to enter whole sale cost
+      Stores new whole sale cost in string
+    case is 8
+      Prompts user to enter retail price
+      Stores new retail price in string
+    case is 9
+      Asks user if editedBook needs to be deleted
+      Deletes book entry
+  else returns null
+*/
 void Inventory::editBook(Book b)
 {
 	Book editedBook = b;
@@ -195,7 +280,7 @@ void Inventory::editBook(Book b)
 			std::cin.ignore();
 			std::getline(std::cin, publisher);
 			editedBook.setPublish(publisher);
-			
+
 			index = 0;
 			break;
 		case 5:
@@ -246,7 +331,10 @@ void Inventory::editBook(Book b)
 
 	mpBL->updateBookInfo(editedBook);
 }
-
+/*
+  Function takes name of file and sends it to saveBookListData function
+  All books are copied into new file
+*/
 void Inventory::saveBookInventory(std::string fileName) {
 	mpBL->saveBookListData(fileName);
 }
