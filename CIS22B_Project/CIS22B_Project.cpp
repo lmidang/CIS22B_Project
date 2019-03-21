@@ -400,7 +400,7 @@ int main() {
 					int lookUpNumber;
 					
 					// display search option
-					cout << "Select a search option:\n"
+					cout << "\nSelect a search option:\n"
 						<< "1: ISBN\n"
 						<< "2: Book Title\n"
 						<< "3: Author\n"
@@ -425,7 +425,7 @@ int main() {
 						}
 						case 2: {	// search for book by title
 							string bookTitle;
-							cout << "Please enter the title of the book you want to search.\n";
+							cout << "\nPlease enter the title of the book you want to search.\n";
 							std::cin.ignore();
 							std::getline(std::cin, bookTitle);
 							bookLookedUp = inventory.lookUpTitle(bookTitle);
@@ -435,7 +435,7 @@ int main() {
 						}
 						case 3: {	// search book by author
 							string author;
-							cout << "Please enter the author of the book you want to search.\n";
+							cout << "\nPlease enter the author of the book you want to search.\n";
 							std::cin.ignore();
 							std::getline(std::cin, author);
 							bookLookedUp = inventory.lookUpAuthor(author);
@@ -454,7 +454,7 @@ int main() {
 
 					}
 					catch (Inventory::bookDoesNotExistException) {
-						cout << "Book does not exit" << endl;
+						cout << "Book does not exist" << endl;
 						invState = kInvLookUp;
 					}
 					break;
@@ -469,7 +469,7 @@ int main() {
 				}
 				case kInvEnterAdmin: {	// asks for password to enter admin mode
 					string passInput;
-					cout << "Enter a password to enter admin mode, or press 0 to exit\n";
+					cout << "\nEnter a password to enter admin mode, or press 0 to exit\n";
 					std::cin >> passInput;
 					if (passInput == adminPass) {	// if password is right, isAdmin is set to true, set invState to kMenu
 						isAdmin = true;
@@ -483,7 +483,7 @@ int main() {
 				case kSaveInventory: {	// saves book inventory from inventory to file
 					inventory.saveBookInventory(fileName);
 
-					cout << "Saved in file " << fileName << endl;
+					cout << "\nSaved in file " << fileName << endl;
 					invState = kInvMenu;	// return to InvMenu
 					break;
 				}
@@ -500,7 +500,7 @@ int main() {
 					break;
 				}
 				case kInvBookDisplay: {	// dipsplay book from lookUpBook
-					cout << bookLookedUp;
+					cout << endl << bookLookedUp;
 
 					if (isAdmin) {	// if isAdmin, provide editing options for book info
 						inventory.editBook(bookLookedUp);

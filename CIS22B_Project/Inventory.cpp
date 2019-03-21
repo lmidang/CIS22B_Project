@@ -31,7 +31,7 @@ Book Inventory::lookUpAuthor(std::string s) {
 		throw bookDoesNotExistException();
 	}
 
-	std::cout << "Select one of the following, by the first number.\n";
+	std::cout << "\nSelect one of the following, by the first number.\n";
 	for (int i = 0; i < size; i++) {
 		Book b = isbnList.getBooks()[i];
 		std::cout << i << ": " << b.getISBN() << ", " << b.getTitle() << ", " << b.getAuthor() << std::endl;
@@ -55,7 +55,7 @@ Book Inventory::lookUpTitle(std::string s) {
 		throw bookDoesNotExistException();
 	}
 
-	std::cout << "Select one of the following, by the first number.\n";
+	std::cout << "\nSelect one of the following, by the first number.\n";
 	for (int i = 0; i < size; i++) {
 		Book b = isbnList.getBooks()[i];
 		std::cout << i << ": " << b.getISBN() << ", " << b.getTitle() << ", " << b.getAuthor() << std::endl;
@@ -81,7 +81,7 @@ void Inventory::addBook()
 	double wholesaleCost;
 	double retailPrice;
 
-	std::cout << "Please enter the ISBN of the book (integer with no dashes): ";
+	std::cout << "\nPlease enter the ISBN of the book (integer with no dashes): ";
 	std::cin >> isbn;
 	bookToAdd.setISBN(isbn);
 	std::cin.ignore();
@@ -108,14 +108,26 @@ void Inventory::addBook()
 
 		std::cout << "Please enter the quantity of the book: ";
 		std::cin >> quantity;
+		while (quantity < 0) {
+			std::cout << "Please enter an appropriate number (0 or above)\n";
+			std::cin >> quantity;
+		}
 		bookToAdd.setQuantity(quantity);
 
 		std::cout << "Please enter the wholesale cost of the book: ";
 		std::cin >> wholesaleCost;
+		while (wholesaleCost < 0) {
+			std::cout << "Please enter an appropriate number (0 or above)\n";
+			std::cin >> wholesaleCost;
+		}
 		bookToAdd.setWholeSale(wholesaleCost);
 
 		std::cout << "Please enter the retail price of the book: ";
 		std::cin >> retailPrice;
+		while (retailPrice < 0) {
+			std::cout << "Please enter an appropriate number (0 or above)\n";
+			std::cin >> retailPrice;
+		}
 		bookToAdd.setRetail(retailPrice);
 
 		mpBL->addBook(bookToAdd);
