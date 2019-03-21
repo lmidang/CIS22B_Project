@@ -298,9 +298,9 @@ int main() {
 					cashier.printCart();
 					cout << "--------------------------------------------------------------------------------------";
 					cout << "--------------------" << endl;
-					cout << left << setw(80) << "Subtotal" << left << "$" << cashier.getSubTotal() << endl;
-					cout << left << setw(80) << "Tax(9%)" << left << "$" << cashier.getSalesTax() << endl;
-					cout << left << setw(80) << "Total" << left << "$" << cashier.getSubTotal() + cashier.getSalesTax() << endl;
+					cout << left << setw(100) << "Subtotal" << left << "$" << cashier.getSubTotal() << endl;
+					cout << left << setw(100) << "Tax(9%)" << left << "$" << cashier.getSalesTax() << endl;
+					cout << left << setw(100) << "Total" << left << "$" << cashier.getSubTotal() + cashier.getSalesTax() << endl;
 
 					// asks if user would like to purchase order
 					cout << "Enter a number from the following menu to continue." << endl;
