@@ -7,14 +7,29 @@
 #include "BookList.h"
 #include "ISBNList.h"
 
-Cashier::Cashier(BookList* bl) //constructor with 
+/*
+constructor with parameters of an object bl that points to the BookList class
+	string mInputISBN equals string value  of "0000000"
+	ISBNList varaiable mpCartList equals a new dynamically allocated ISBNList object
+	mpInventory variable equals bl variable which is a pointer to BookList
+*/
+
+Cashier::Cashier(BookList* bl) //constructor
 {
 	mInputISBN = "0000000"; //sets isbn value to deafult of zero
 	mpCartList = new ISBNList(); //new dynamically allocated class created from ISBNList
 	mpInventory = bl; //copies the address of a pointer to a ISBNList class
 }
 
-Cashier::~Cashier(){
+/*
+destructor with no parameters
+	if ISBNList variable mpCartList is not equal to a null pointer
+		delete mpCartList
+		mpCartList equals nullpointer
+*/
+
+Cashier::~Cashier() //destructor
+{
 	if (mpCartList != nullptr) //if mpCartList exists
 	{
 		delete mpCartList; //clears mpCartList
@@ -22,15 +37,25 @@ Cashier::~Cashier(){
 	}
 }
 
-//getter function
-std::string Cashier::getInputISBN() const
+/*
+function string gets user input isbn and is constant with no parameters
+	return isbn input string
+*/
+
+std::string Cashier::getInputISBN() const //getter function
 {
 	return mInputISBN;
 }
 
+/*
+function void sets user input isbn has parameter string I
+	if BookList variable mpInventory calling function doesBookExist with paramter I is less than 0
+		throw exception that isbn does not exist
+	isbn input string equals string I
+*/
 
-//setter function with exception
-void Cashier::setInputISBN(std::string I)
+void Cashier::setInputISBN(std::string I) //setter function with exception
+
 {
 	if (mpInventory->doesBookExist(I) < 0)
 	{
@@ -39,8 +64,27 @@ void Cashier::setInputISBN(std::string I)
 	mInputISBN = I;
 }
 
-//function to add book objects to a cart
-void Cashier::addToCart(std::string ISBN, int qty)
+/*
+function void adds a book to the cart with parameters string ISBN and integer qty
+	integer index equals position of book in inventory
+	integer cartQty equals integer qty
+	if position is greater than -1
+		class Book variable invB equals array of book with specific isbn in BookList variable mpInventory
+		integer cartIndex equals position of book in cart
+		if position is greater than -1
+			class Book b gets book based from cart based on index position in cart
+			add quantity to book object in cart
+		if the cart quantity is greater than inventory quantity
+			throw exception that there are not enough books in stock
+		else
+			class Book b equals class Book with paramters invB
+			b call function setQuantity with paramters qty
+			mpCartList call function addBook with paramter b
+	else
+		throw exception that isbn does not exist
+*/
+
+void Cashier::addToCart(std::string ISBN, int qty) //function to add book objects to a cart
 {
 	int index = mpInventory->doesBookExist(ISBN); //variable index gets position of book 
 	int cartQty = qty;
@@ -72,8 +116,26 @@ void Cashier::addToCart(std::string ISBN, int qty)
 	}
 }
 
-//function to subtract book objects from the cart
-int Cashier::removeFromCart(std::string isbn, int qty)
+
+/*
+function integer removes a book from the cart with paramters string isbn and integer qty
+	int index equals position of book in cart
+	if position is greater than -1
+		object b in book class equals array of book in cart
+		integer book quantity equals the book quantity after subtracting it from the cart
+		if book quantity is greater than 0
+			set quantity of book b object to book qunatity after substraction
+			update info in cart by copying book b into the books array
+		else if book quantity is equal to 0
+			remove the book from the cart entirely
+		else
+			throw exception that user is subtracting more books than are in the cart
+	else
+		throw exception that the isbn does not exist
+	return the size of the book array of the cart book object
+*/
+
+int Cashier::removeFromCart(std::string isbn, int qty) //function to subtract book objects from the cart
 {
 	int index = mpCartList->doesBookExist(isbn); //variable index gets position of book 
 	if (index > -1)
@@ -101,8 +163,19 @@ int Cashier::removeFromCart(std::string isbn, int qty)
 	return mpCartList->getSize(); //return size of cartlist in terms of book objects
 }
 
-// function to subtract books from inventory list file
-void Cashier::updateInventory(std::string fileName)
+/*
+function void updates inventory with paremters string fileName
+	integer variable equals getSize function from cart object
+	for integer i equals zero, i is less than size of cart, incease i by 1
+		class Book variable of cart is equal to getBooks function with array i from cart object
+		class Book variable of inventory is equal to getBooks function with array position of Book
+		integer variable of quantity equals value returned from call function subtract book quantity
+		set quantity in inventory object of class book
+		update book info of class variable inventory from booklist
+	save bookdata into fileNmae in inventory variable
+*/
+
+void Cashier::updateInventory(std::string fileName) //function to subtract books from inventory list file
 {
 	int size = mpCartList->getSize();
 	for (int i = 0; i < size; i++)
@@ -118,8 +191,17 @@ void Cashier::updateInventory(std::string fileName)
 	mpInventory->saveBookListData(fileName); //saves data directly into file from book class object
 }
 
-// function to print quantity, isbn, name, and price values from cart
-void Cashier::printCart()
+/*
+function void prints the cart
+	integer variable equals getSize function from cart object
+	sort books from cartlist object
+	for integer i equals zero, i is less than size of cart, incease i by 1
+		class Book b is equal to getBooks function with array i from cart object
+		setwidth to 20 between all pieces of information except 40 before title
+		ouptut "quanity, ISBN, Title, Retail Cost, Total price(quantity times cost)"
+*/
+
+void Cashier::printCart() //function to print quantity, isbn, name, and price values from cart
 {
 	int size = mpCartList->getSize();
 	mpCartList->sortBooks();
@@ -131,17 +213,31 @@ void Cashier::printCart()
 	}
 }
 
-//function to multipy subtotal function by a tax rate to obtain a taxed value
-double Cashier::getSalesTax()
+/*
+function double that gets a sales tax with no parameters
+	set double variable of a taxrate equal to .09
+	set double variable equal to the subtotal times the sales tax
+	return tax value
+*/
+
+double Cashier::getSalesTax() //function to multipy subtotal function by a tax rate to obtain a taxed value
 {
-	double SALES_TAX = .09; // set sales tax rate to 9%
+	double SALES_TAX = .09; //set sales tax rate to 9%
 	double salesTax = getSubTotal() * SALES_TAX; //multiply subtotal by 9%
 	return salesTax; //return tax based on subtotal
 }
 
+/*
+function double that gets a subtotal from cart with no parameters
+	integer variable equals getSize function from cart object
+	double variable of subtotal equals zero
+	for integer i equals zero, i is less than size of cart, incease i by 1
+		class Book b is equal to getBooks function with array i from cart object
+		subtotal is equal to subtotal plus quantity times retail value of book b
+	return subtotal
+*/
 
-//function to add price values of books multiplied by quantity in cart to obtain a subtotal
-double Cashier::getSubTotal()
+double Cashier::getSubTotal() //function to add price values of books multiplied by quantity in cart to obtain a subtotal
 {
 	int size = mpCartList->getSize();
 
