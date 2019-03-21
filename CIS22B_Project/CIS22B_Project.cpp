@@ -218,7 +218,7 @@ int main() {
 							cashier.addToCart(CInputISBN, quantityOfBook);
 						}
 						catch (Cashier::isbnDoesNotExistException) {	// inform user if isbn entered doesn't exist
-							std::cout << " Error: Book does not exist." << endl;
+							std::cout << "Error: Book does not exist." << endl;
 						}
 						catch (Cashier::notEnoughInStockException) {	// infrom use in not enough books in stock
 							std::cout << "Not enough books in stock." << endl;

@@ -1,11 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include "Book.h"
+
 #include "Cashier.h"
-#include "BookList.h"
-#include "ISBNList.h"
+
 
 /*
 constructor with parameters of an object bl that points to the BookList class
