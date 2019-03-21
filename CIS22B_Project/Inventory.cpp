@@ -10,7 +10,7 @@ Inventory::Inventory(BookList* pB)
 	mpBL = pB;
 }
 /*
-Default destructor
+Destructor with no parameters
 */
 Inventory::~Inventory() {
 };
