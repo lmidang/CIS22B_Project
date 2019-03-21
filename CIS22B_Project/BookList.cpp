@@ -199,6 +199,7 @@ void BookList::saveBookListData(std::string fileName) {
 			<< b.getPublish() << "," << b.getDateAdd() << "," << b.getQuantity() << ","
 			<< b.getWholeSale() << "," << b.getRetail() << std::endl;
 	}
+	outputStream.close();
 }
 
 /*
@@ -208,9 +209,9 @@ void BookList::printBooks() {
 	for (int i = 0; i < size; i++) {
 		Book b = books[i];	//goes through every book in the books array
 							//prints the information for all the books onto the screen
-		std::cout << b.getISBN() << std::setw(10) << b.getTitle() << std::setw(10) << b.getAuthor() << std::setw(10)
-			<< b.getPublish() << std::setw(10) << b.getDateAdd() << std::setw(10) << b.getQuantity() << std::setw(10) << std::fixed << std::setprecision(2)
-			<< b.getWholeSale() << std::setw(10) << std::fixed << std::setprecision(2) << b.getRetail() << std::endl;
+		std::cout << b.getISBN() << ",  " << b.getTitle() << ",\t" << b.getAuthor() << ",\t"
+			<< b.getPublish() << ",\t" << b.getDateAdd() << ", " << b.getQuantity() << ", " << std::fixed << std::setprecision(2)
+			<< b.getWholeSale() << ", " << std::fixed << std::setprecision(2) << b.getRetail() << std::endl;
 	}
 }
 
@@ -225,7 +226,7 @@ double BookList::printWholesaleValue() {
 
 	for (int i = 0; i < size; i++) {
 		Book b = books[i];			//goes through each book in the books array
-		std::cout << b.getISBN() << std::setw(10) << b.getTitle() << std::setw(10) << std::fixed << std::setprecision(2)	//prints the ISBN, Title, and wholesale cost for all the books onto the screen
+		std::cout << b.getISBN() << ",\t" << b.getTitle() << ",\t$" << std::fixed << std::setprecision(2)	//prints the ISBN, Title, and wholesale cost for all the books onto the screen
 			<< b.getWholeSale() << std::endl;
 		//calculates the total wholesale cost by adding the wholesale cost for all the books in the books array
 		totalWholesale += b.getWholeSale();
@@ -245,7 +246,7 @@ double BookList::printRetailValue() {
 	for (int i = 0; i < size; i++) {
 		Book b = books[i];		//goes through each book in the books array
 								//print the ISBN, title, and wholesale cost for every book in the books array
-		std::cout << b.getISBN() << std::setw(10) << b.getTitle() << std::setw(10) << std::fixed << std::setprecision(2) << b.getRetail() << std::endl;
+		std::cout << b.getISBN() << ",\t" << b.getTitle() << ",\t$" << std::fixed << std::setprecision(2) << b.getRetail() << std::endl;
 		//calculates the total wholesale cost by adding the wholesale cost for all the books in the books array
 		totalRetail += b.getRetail();
 	}

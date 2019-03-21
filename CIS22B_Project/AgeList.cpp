@@ -56,11 +56,11 @@ Function to print the ISBN, Title, Author, and the Age for all the books
 */
 
 void AgeList::printBooks() {
-	std::cout << "ISBN" << std::setw(10) << "Title" << std::setw(10) << "Author" << std::setw(10) << "Date Added" << std::endl;
+	std::cout << "ISBN" << ",\t" << "Title" << ",\t" << "Author" << ",\t" << "Date Added" << std::endl;
 	//prints the header before printing all the books
 	for (int i = 0; i < size; i++) {
 		Book b = books[i];	//get every Book from the books array 
 		//print the ISBN, Title, Author, and Age for each Book
-		std::cout << b.getISBN() << "," << b.getTitle() << "," << b.getAuthor() << "," << b.getDateAdd() << std::endl;
+		std::cout << b.getISBN() << "\t" << b.getTitle() << "\t" << b.getAuthor() << "\t" << b.getDateAdd() << std::endl;
 	}
 }

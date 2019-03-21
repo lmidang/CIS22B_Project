@@ -56,7 +56,6 @@ void Report::printReport(int input) {
 	case 2: {
 		printBooks = new ISBNList(*booksOriginal);	//create an ISBNList object
 		//the size of the original array and the size of the ISBNList is printed on the screen
-		std::cout << "Num books " << booksOriginal->getSize() << " " << printBooks->getSize() << std::endl;
 		printBooks->sortBooks();	//sort the books by ISBN
 		double totalWholesaleValue = printBooks->printWholesaleValue();	//print the wholesale costs for all the books
 		//print the total wholesale cost

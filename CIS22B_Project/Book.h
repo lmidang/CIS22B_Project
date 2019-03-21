@@ -41,18 +41,40 @@ public:
 	double getWholeSale() const;
 	double getRetail() const;
 
-	// friend method to increase and decrease quantity of a book
+	// friend methods to increase and decrease quantity of a book
+	/**
+		A friend function that accesses attributes of the Book class
+		Takes two Book objects as its parameters and returns the sum of the books’ quantitys.	
+		Add the quantity of Book a with the quantity of Book b and returns it.
+	*/
 	friend int addBookQty(Book a, Book b) {
 		return a.mQuantOnHand + b.mQuantOnHand;
 	}
+
+	/**
+		A friend function that accesses attributes of the Book class
+		Takes two Book objects as its parameters and returns the difference of the books’ quantitys.
+		Add the quantity of Book a with the quantity of Book b and returns it.
+	*/
 	friend int subtractBookQty(Book a, Book b) {
 		return a.mQuantOnHand - b.mQuantOnHand;
 	}
+
+	/**
+		A friend function that accesses attributes of the Book class
+		Takes a Book object and integer as its parameters and returns the difference of the book's quantity and the integer.
+		Add the quantity of Book a with the quantity of Book b and returns it.
+	*/
 	friend int subtractBookQty(Book a, int b) {
 		return a.mQuantOnHand - b;
 	}
 
 	// operator overload to print full book information
+	/**
+		A function that overloads the << operator so that all the attributes of the Book object can be printed in one statement. 
+		Takes the output stream and one constant reference to a Book object as its parameters. 
+		Prints all the attributes of one Book object to the output stream
+	*/
 	friend std::ostream& operator<< (std::ostream &out, const Book &b) {
 		out << "ISBN: " << b.mISBN << std::endl
 			<< "Book Title: " << b.mTitle << std::endl

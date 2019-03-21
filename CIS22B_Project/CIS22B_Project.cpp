@@ -23,6 +23,7 @@ int getData(string, BookList&);
 /**
 * Main function
 *
+ask for file name
 set moduleState to kMenu
 set fileName to "booklist.csv"
 set numBooks to the number returned from reading the file
@@ -144,9 +145,12 @@ while moduleState is not kExit
 */
 int main() {
 	int moduleState = kMenu;
-	string fileName = "booklist.csv";	// file containing the books
+	string fileName;	// file containing the books
 
 	ISBNList bl;
+
+	cout << "Please enter the full path of the inventory file. ie C:\\Users\\starr\\Documents\\GitHub\\CIS22B_Project\\CIS22B_Project\\booklist.csv\n";
+	cin >> fileName;
 	// check if there are any books and if there are none display an error and leave
 	int numBooks = getData(fileName, bl);
 	if (numBooks < 1) {
@@ -620,5 +624,6 @@ int getData(string inputFileName, BookList &bl) {
 			index++;
 		}
 	}
+	inFile.close();
 	return index;
 }

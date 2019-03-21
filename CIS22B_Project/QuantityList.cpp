@@ -63,6 +63,6 @@ void QuantityList::printBooks() {
 	for (int i = 0; i < size; i++) {
 		Book b = books[i];//get every Book from the books array 
 		//print the ISBN, Title, Author, and Quantity for each Book
-		std::cout << b.getISBN() << "," << b.getTitle() << "," << b.getAuthor() << "," << " $" << b.getQuantity() << std::endl;
+		std::cout << b.getISBN() << "\t" << b.getTitle() << "\t" << b.getAuthor() << "\t" << b.getQuantity() << std::endl;
 	}
 }
